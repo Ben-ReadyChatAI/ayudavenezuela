@@ -56,8 +56,8 @@
     "en": "Ayuda Venezuela is a directory that gathers community links and information. We do not run the linked campaigns, databases, or services, nor guarantee their accuracy or availability. Earthquake figures are preliminary and change over time. Always verify at the source before acting, traveling, or donating."
   },
   "footer": {
-    "submit": { "es": "¿Tienes un recurso o una corrección? Escríbenos.", "en": "Have a resource or a correction? Contact us." },
-    "submitUrl": null,
+    "submit": { "es": "¿Tienes un recurso, una corrección o un enlace caído? Sugiérelo aquí.", "en": "Have a resource, correction, or broken link? Suggest it here." },
+    "submitUrl": "https://github.com/Ben-ReadyChatAI/ayudavenezuela/issues/new?template=resource.yml",
     "credit": {
       "es": "Hecho con solidaridad para Venezuela. 🇻🇪",
       "en": "Made in solidarity with Venezuela. 🇻🇪"

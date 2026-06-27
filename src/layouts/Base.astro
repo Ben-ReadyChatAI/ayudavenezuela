@@ -46,6 +46,11 @@ const canonical = site.site ?? `https://${site.domain}/`;
     <footer class="site-footer">
       <div class="wrap">
         <p class="disclaimer">{tt(site.disclaimer, lang)}</p>
+        {site.footer.submitUrl && (
+          <p class="submit">
+            <a href={site.footer.submitUrl} target="_blank" rel="noopener noreferrer">✏️ {tt(site.footer.submit, lang)}</a>
+          </p>
+        )}
         <p class="credit">{tt(site.footer.credit, lang)}</p>
         <p class="updated">Última actualización: {site.updated}</p>
         <a class="backtop" href="#contenido">↑ {tt(site.ui.backToTop, lang)}</a>

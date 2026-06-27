@@ -1,0 +1,53 @@
+name: Sugerir o corregir un recurso
+description: Propón un nuevo enlace, una corrección o reporta un enlace caído. / Suggest a link, a correction, or report a broken link.
+title: "[Recurso] "
+labels: ["recurso"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por ayudar a mantener esta información útil y segura. Verifica que el recurso sea legítimo y esté activo antes de sugerirlo.
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo / Type
+      options:
+        - Nuevo recurso / New resource
+        - Corrección / Correction
+        - Enlace caído o no funciona / Broken link
+    validations:
+      required: true
+  - type: dropdown
+    id: categoria
+    attributes:
+      label: Categoría / Category
+      options:
+        - Información oficial y emergencias
+        - Buscar personas
+        - Mascotas
+        - Pacientes y hospitales
+        - Información de seguridad
+        - Donaciones
+        - Apoyo psicológico
+        - Insumos requeridos
+        - Otra / Other
+  - type: input
+    id: nombre
+    attributes:
+      label: Nombre del recurso / Resource name
+  - type: input
+    id: url
+    attributes:
+      label: Enlace (URL)
+      placeholder: https://
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: Descripción y detalles / Description
+  - type: textarea
+    id: verificacion
+    attributes:
+      label: ¿Cómo verificaste que es legítimo y está activo? / How did you verify it?
+      description: Importante para evitar estafas o datos falsos. / Helps us avoid scams and false data.
+    validations:
+      required: true
