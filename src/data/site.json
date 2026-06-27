@@ -8,22 +8,32 @@
   "updated": "2026-06-27",
   "languages": { "es": "Español", "en": "English" },
   "emergency": {
-    "verified": false,
+    "verified": true,
     "title": { "es": "Emergencias", "en": "Emergencies" },
     "note": {
-      "es": "Si hay una emergencia que pone en riesgo la vida, contacta de inmediato a los servicios de emergencia.",
-      "en": "If there is a life-threatening emergency, contact emergency services immediately."
+      "es": "Protección Civil: 0800-5588427 · 0800-2668446 · 0800-2624368. Reporta personas atrapadas o desaparecidas en la app VenApp.",
+      "en": "Civil Protection: 0800-5588427 · 0800-2668446 · 0800-2624368. Report trapped or missing people via the VenApp app."
     },
     "numbers": [
-      { "num": "171", "label": { "es": "Emergencias (por verificar)", "en": "Emergencies (unverified)" } }
+      { "num": "911", "label": { "es": "Emergencias", "en": "Emergencies" } },
+      { "num": "171", "label": { "es": "CANTV", "en": "CANTV landlines" } }
     ]
   },
   "event": {
-    "verified": false,
-    "headline": { "es": "Terremoto en Venezuela — Junio 2026", "en": "Venezuela Earthquake — June 2026" },
+    "verified": true,
+    "headline": { "es": "Terremoto en Venezuela — 24 de junio de 2026", "en": "Venezuela earthquake — June 24, 2026" },
     "summary": {
-      "es": "Información sobre el sismo en verificación. Esta sección se actualizará con datos oficiales (magnitud, zonas afectadas y respuesta de emergencia).",
-      "en": "Earthquake details are being verified. This section will be updated with official data (magnitude, affected areas, and emergency response)."
+      "es": "Dos sismos de magnitud 7,2 y 7,5 sacudieron la costa central de Venezuela el 24 de junio de 2026 (~6:05 p.m.), con epicentro cerca de Yumare, a unos 160 km al oeste de Caracas. Las zonas más afectadas son La Guaira y Caracas, además de Yaracuy, Carabobo, Falcón, Aragua y Miranda.",
+      "en": "Two earthquakes of magnitude 7.2 and 7.5 struck Venezuela's central coast on June 24, 2026 (~6:05 p.m.), with the epicenter near Yumare, about 160 km west of Caracas. The hardest-hit areas are La Guaira and Caracas, plus Yaracuy, Carabobo, Falcón, Aragua and Miranda."
+    },
+    "stats": [
+      { "value": "7,2 + 7,5", "label": { "es": "Magnitud (doble sismo)", "en": "Magnitude (doublet)" } },
+      { "value": "1.430+", "label": { "es": "Fallecidos*", "en": "Deaths*" } },
+      { "value": "~3.300+", "label": { "es": "Heridos*", "en": "Injured*" } }
+    ],
+    "statsNote": {
+      "es": "*Cifras preliminares al 27/06/2026 y sujetas a cambio. Fuentes: USGS, autoridades venezolanas y medios. Ver fuentes.",
+      "en": "*Preliminary figures as of 2026-06-27, subject to change. Sources: USGS, Venezuelan authorities and media."
     }
   },
   "ui": {
@@ -42,8 +52,8 @@
     }
   },
   "disclaimer": {
-    "es": "Ayuda Venezuela es un directorio que reúne enlaces e información de la comunidad. No gestionamos las campañas, bases de datos ni servicios enlazados, ni garantizamos su exactitud o disponibilidad. Verifica siempre la información en la fuente antes de actuar, trasladarte o donar.",
-    "en": "Ayuda Venezuela is a directory that gathers community links and information. We do not run the linked campaigns, databases, or services, nor do we guarantee their accuracy or availability. Always verify information at the source before acting, traveling, or donating."
+    "es": "Ayuda Venezuela es un directorio que reúne enlaces e información de la comunidad. No gestionamos las campañas, bases de datos ni servicios enlazados, ni garantizamos su exactitud o disponibilidad. Las cifras del sismo son preliminares y cambian con el tiempo. Verifica siempre la información en la fuente antes de actuar, trasladarte o donar.",
+    "en": "Ayuda Venezuela is a directory that gathers community links and information. We do not run the linked campaigns, databases, or services, nor guarantee their accuracy or availability. Earthquake figures are preliminary and change over time. Always verify at the source before acting, traveling, or donating."
   },
   "footer": {
     "submit": { "es": "¿Tienes un recurso o una corrección? Escríbenos.", "en": "Have a resource or a correction? Contact us." },

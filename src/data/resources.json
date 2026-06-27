@@ -1,14 +1,29 @@
 {
   "meta": {
-    "source": "Ayuda Venezuela.xlsx (community seed, 2026-06-27)",
-    "note_es": "Enlaces recopilados por la comunidad. Verifica siempre la información antes de actuar o donar.",
-    "note_en": "Community-sourced links. Always verify information before acting or donating.",
+    "source": "Ayuda Venezuela.xlsx (community seed) + verificación 2026-06-27 (ver docs/SOURCES.md)",
+    "note_es": "Enlaces recopilados por la comunidad y verificados el 27-jun-2026. Verifica siempre la información en la fuente antes de actuar o donar.",
+    "note_en": "Community-sourced links verified on 2026-06-27. Always verify at the source before acting or donating.",
     "statusLegend": {
-      "active": { "es": "Activo", "en": "Active" },
+      "active": { "es": "Verificado", "en": "Verified" },
       "needs-check": { "es": "Por verificar", "en": "Needs verification" }
     }
   },
   "categories": [
+    {
+      "id": "oficial",
+      "emoji": "🆘",
+      "title": { "es": "Información oficial y emergencias", "en": "Official information & emergencies" },
+      "blurb": {
+        "es": "Canales oficiales del Estado y agencias para reportar emergencias y verificar información. Confía en FUNVISIS, USGS y Protección Civil para datos del sismo.",
+        "en": "Official state and agency channels to report emergencies and verify information."
+      },
+      "items": [
+        { "name": "VenApp — Reportar personas", "url": "https://www.venapp.com/", "type": "app", "status": "active", "note": { "es": "App oficial para reportar personas atrapadas o desaparecidas al Centro de Comando de Emergencias.", "en": "Official app to report trapped or missing people to the Emergency Command Center." } },
+        { "name": "FUNVISIS", "url": "http://www.funvisis.gob.ve/", "type": "website", "status": "active", "note": { "es": "Agencia sísmica oficial: magnitudes y réplicas.", "en": "Official seismic agency: magnitudes and aftershocks." } },
+        { "name": "Protección Civil", "handle": "@PCivil_Ve", "url": "https://x.com/PCivil_Ve", "type": "social", "status": "active", "note": { "es": "También en Instagram: @pcivil_venezuela.", "en": "Also on Instagram: @pcivil_venezuela." } },
+        { "name": "Cruz Roja Venezolana", "handle": "@CruzRojaVe", "url": "https://x.com/CruzRojaVe", "type": "social", "status": "active" }
+      ]
+    },
     {
       "id": "personas",
       "emoji": "🔎",
@@ -17,36 +32,34 @@
         "es": "Portales y bots para reportar y localizar personas tras el terremoto.",
         "en": "Portals and bots to report and locate people after the earthquake."
       },
+      "caveat": {
+        "es": "Comparte solo la información personal mínima necesaria. Son iniciativas ciudadanas que no verifican la identidad de quienes publican.",
+        "en": "Share only the minimum personal information necessary. These are citizen initiatives that do not verify who posts."
+      },
       "items": [
-        { "name": "VenezuelaTeBusca", "url": "https://venezuelatebusca.com/", "type": "website", "status": "active" },
-        { "name": "Red Ayuda Venezuela", "url": "https://redayudavenezuela.com/", "type": "website", "status": "active" },
-        { "name": "Localizados Venezuela", "url": "https://localizadosvenezuela.com/", "type": "website", "status": "active" },
-        { "name": "Desaparecidos Terremoto Venezuela", "url": "https://desaparecidosterremotovenezuela.com/", "type": "website", "status": "needs-check", "note": { "es": "Los reportes no se visualizaban en la última revisión.", "en": "Reports were not displaying at last review." } },
-        { "name": "Nexo Signal — Búsqueda", "url": "https://busca.nexosignal.co/", "type": "website", "status": "needs-check" },
-        { "name": "Bot de búsqueda (Telegram)", "url": "https://t.me/busqueda_vzla_temblor_bot", "type": "telegram", "status": "active", "note": { "es": "Búsqueda de personas vía bot de Telegram.", "en": "Person search via Telegram bot." } }
+        { "name": "Localizados Venezuela", "url": "https://localizadosvenezuela.com/", "type": "website", "status": "active", "note": { "es": "Registro de personas localizadas a salvo. Operador identificado.", "en": "Registry of people found safe. Named operator." } },
+        { "name": "VenezuelaTeBusca", "url": "https://venezuelatebusca.com/", "type": "website", "status": "active", "note": { "es": "Registro público de personas. Iniciativa ciudadana.", "en": "Public people registry. Citizen initiative." } },
+        { "name": "Desaparecidos Terremoto Venezuela", "url": "https://desaparecidosterremotovenezuela.com/", "type": "website", "status": "active", "note": { "es": "Reconexión de personas desaparecidas.", "en": "Reconnecting missing people." } },
+        { "name": "Red Ayuda Venezuela", "url": "https://redayudavenezuela.com/", "type": "website", "status": "active", "note": { "es": "Coordinación de ayuda y búsqueda.", "en": "Aid and search coordination." } },
+        { "name": "Nexo Signal — «Niños de Pie»", "url": "https://busca.nexosignal.co/", "type": "website", "status": "active", "caution": true, "note": { "es": "Registro de NIÑOS no acompañados. Maneja datos sensibles de menores: úsalo con precaución y sin operador identificado.", "en": "Registry of unaccompanied CHILDREN. Handles sensitive minors' data; use with caution." } },
+        { "name": "Bot de búsqueda (Telegram)", "url": "https://t.me/busqueda_vzla_temblor_bot", "type": "telegram", "status": "active", "caution": true, "note": { "es": "Operador no identificado; comparte datos con precaución.", "en": "Unidentified operator; share data with caution." } }
       ]
     },
     {
       "id": "mascotas",
       "emoji": "🐾",
       "title": { "es": "Mascotas perdidas", "en": "Lost pets" },
-      "blurb": {
-        "es": "Reúne a las mascotas con sus familias.",
-        "en": "Reunite pets with their families."
-      },
+      "blurb": { "es": "Reúne a las mascotas con sus familias.", "en": "Reunite pets with their families." },
       "items": [
-        { "name": "Mascotas por Venezuela", "url": "https://mascotasporvenezuela.com/", "type": "website", "status": "active" },
-        { "name": "Mi Gente VE", "url": "https://migenteve.com/", "type": "website", "status": "active" }
+        { "name": "Mascotas por Venezuela", "url": "https://mascotasporvenezuela.com/", "type": "website", "status": "active", "note": { "es": "Mascotas perdidas/encontradas, refugios y veterinarios.", "en": "Lost/found pets, shelters and vets." } },
+        { "name": "Mi Gente VE — «Patitas a Salvo»", "url": "https://migenteve.com/", "type": "website", "status": "active", "note": { "es": "Mascotas perdidas y directorio veterinario 24 h.", "en": "Lost pets and 24h vet directory." } }
       ]
     },
     {
       "id": "hospitales",
       "emoji": "🏥",
       "title": { "es": "Pacientes y hospitales", "en": "Patients & hospitals" },
-      "blurb": {
-        "es": "Bases de datos de pacientes consolidados en hospitales.",
-        "en": "Databases of patients consolidated across hospitals."
-      },
+      "blurb": { "es": "Bases de datos de pacientes consolidados en hospitales.", "en": "Databases of patients consolidated across hospitals." },
       "items": [
         { "name": "Pacientes Consolidados — Hospitales Venezuela", "url": "https://www.dropbox.com/scl/fi/m4fbaw4metvkuay91fi0j/26JUN26-23.45-Pacientes-Consolidados-Hospitales-Venezuela.xlsx?rlkey=0bjem2yymn9q88qumzr33fisz&dl=0", "type": "file", "status": "needs-check", "note": { "es": "Hoja de cálculo (Dropbox), actualizada 26-jun.", "en": "Spreadsheet (Dropbox), updated Jun 26." } },
         { "name": "Carpeta de información (Google Drive)", "url": "https://drive.google.com/drive/folders/1o36ifaRz45kAs5rKzci49aD0mP5JB_YI", "type": "file", "status": "needs-check" }
@@ -55,43 +68,40 @@
     {
       "id": "seguridad",
       "emoji": "🛡️",
-      "title": { "es": "Información de seguridad", "en": "Safety information" },
-      "blurb": {
-        "es": "Guías e iniciativas ciudadanas para mantenerte a salvo.",
-        "en": "Guides and citizen initiatives to stay safe."
-      },
+      "title": { "es": "Información de seguridad y ayuda", "en": "Safety & help information" },
+      "blurb": { "es": "Directorios e iniciativas ciudadanas verificadas para pedir y ofrecer ayuda.", "en": "Verified citizen directories and initiatives to request and offer help." },
       "items": [
-        { "name": "Redes Ayuda — Iniciativas Ciudadanas", "url": "https://redesayuda.org/iniciativasciudadanas", "type": "website", "status": "needs-check" },
-        { "name": "VzlaAyuda", "url": "https://vzlaayuda.com/", "type": "website", "status": "needs-check" },
-        { "name": "Terremoto — Hazlo Hoy", "url": "https://terremoto.hazlohoy.org/", "type": "website", "status": "needs-check" }
+        { "name": "Redes Ayuda — Iniciativas Ciudadanas", "url": "https://redesayuda.org/iniciativasciudadanas", "type": "website", "status": "active", "note": { "es": "Directorio de 102 iniciativas verificadas (ONG Redes Ayuda).", "en": "Directory of 102 verified initiatives (NGO Redes Ayuda)." } },
+        { "name": "Terremoto — Hazlo Hoy", "url": "https://terremoto.hazlohoy.org/", "type": "website", "status": "active", "note": { "es": "Agregador ciudadano: reportar/buscar, marcar a salvo, mapa.", "en": "Citizen aggregator: report/search, mark safe, map." } },
+        { "name": "VzlaAyuda", "url": "https://vzlaayuda.com/", "type": "website", "status": "active", "note": { "es": "Conecta ayuda entre personas. Redirige a vzlayuda.com (mismo equipo).", "en": "Connects mutual aid. Redirects to vzlayuda.com (same team)." } }
       ]
     },
     {
       "id": "donaciones",
       "emoji": "💚",
       "title": { "es": "Donar", "en": "Donate" },
-      "blurb": {
-        "es": "Campañas para apoyar económicamente a las víctimas. Verifica antes de donar.",
-        "en": "Campaigns to financially support victims. Verify before donating."
+      "blurb": { "es": "Campañas para apoyar a las víctimas.", "en": "Campaigns to support victims." },
+      "caveat": {
+        "es": "Verifica antes de donar. Prefiere organizaciones registradas con trayectoria; evita pagos por criptomonedas, tarjetas de regalo o billeteras anónimas.",
+        "en": "Verify before donating. Prefer registered organizations; avoid crypto, gift cards, or anonymous wallets."
       },
       "items": [
-        { "name": "Alimenta la Solidaridad", "url": "https://donate.alimentalasolidaridad.org/campaign/815565/donate", "type": "donation", "status": "needs-check", "note": { "es": "Campaña 815565. Confirmar enlace oficial.", "en": "Campaign 815565. Confirm official link." } },
-        { "name": "GoFundMe — Emergency Relief for Venezuela Earthquake Victims", "url": "https://www.gofundme.com/f/emergency-relief-for-venezuela-earthquake-victims", "type": "donation", "status": "needs-check", "note": { "es": "Confirmar campaña y organizador antes de difundir.", "en": "Confirm campaign and organizer before sharing." } }
+        { "name": "Cruz Roja (IFRC) — Llamamiento Venezuela", "url": "https://donate.redcrossredcrescent.org/ifrc/venezuela-earthquake/", "type": "donation", "status": "active", "note": { "es": "Organización internacional verificada (IFRC).", "en": "Verified international organization (IFRC)." } },
+        { "name": "GoFundMe — Centro verificado de donaciones", "url": "https://www.gofundme.com/c/act/venezuela-earthquake-relief", "type": "donation", "status": "active", "note": { "es": "Centro oficial de ONG verificadas por GoFundMe.", "en": "Official GoFundMe-vetted NGO hub." } },
+        { "name": "Alimenta la Solidaridad", "url": "https://donate.alimentalasolidaridad.org/campaign/terremoto/c815565", "type": "donation", "status": "active", "note": { "es": "ONG venezolana (cocinas comunitarias). Procesado por Classy.", "en": "Venezuelan NGO (community kitchens). Processed via Classy." } },
+        { "name": "GoFundMe — I Love Venezuela Foundation", "url": "https://www.gofundme.com/f/emergency-relief-for-venezuela-earthquake-victims", "type": "donation", "status": "active", "note": { "es": "Fundación del exilio (Miami). Legítima; no figura en el centro verificado de GoFundMe.", "en": "Diaspora foundation (Miami). Legitimate; not on GoFundMe's vetted hub." } }
       ]
     },
     {
       "id": "psicologico",
       "emoji": "🧠",
       "title": { "es": "Apoyo psicológico", "en": "Mental-health support" },
-      "blurb": {
-        "es": "Canales de contención emocional y primeros auxilios psicológicos.",
-        "en": "Channels for emotional support and psychological first aid."
-      },
+      "blurb": { "es": "Canales de contención emocional y primeros auxilios psicológicos.", "en": "Channels for emotional support and psychological first aid." },
       "items": [
-        { "name": "PsicoData", "handle": "@psicodata", "url": null, "type": "social", "status": "needs-check" },
-        { "name": "PSF Venezuela", "handle": "@psfvenezuela", "url": null, "type": "social", "status": "needs-check" },
-        { "name": "FPV", "handle": "@fpv_ve", "url": null, "type": "social", "status": "needs-check" },
-        { "name": "UNIMET", "handle": "@unimet", "url": null, "type": "social", "status": "needs-check" }
+        { "name": "PsicoData", "handle": "@psicodatavzla", "url": "https://www.instagram.com/psicodatavzla/", "type": "social", "status": "active", "note": { "es": "Iniciativa de salud mental (UCAB).", "en": "Mental-health initiative (UCAB)." } },
+        { "name": "Psicólogos Sin Fronteras Venezuela", "handle": "@psfvenezuela", "url": "https://www.instagram.com/psfvenezuela/", "type": "social", "status": "active", "note": { "es": "Apoyo psicosocial en emergencias. También en X.", "en": "Psychosocial support in emergencies. Also on X." } },
+        { "name": "Federación de Psicólogos de Venezuela", "handle": "@fpv_ve", "url": "https://www.instagram.com/fpv_ve/", "type": "social", "status": "active", "note": { "es": "En X: @fpv_vzla.", "en": "On X: @fpv_vzla." } },
+        { "name": "Universidad Metropolitana (UNIMET)", "handle": "@unimet", "url": "https://www.instagram.com/unimet/", "type": "social", "status": "active", "note": { "es": "Programas de apoyo psicológico.", "en": "Psychological support programs." } }
       ]
     }
   ]

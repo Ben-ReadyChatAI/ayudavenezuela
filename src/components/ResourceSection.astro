@@ -7,6 +7,7 @@ const { cat } = Astro.props;
 <div class="cat" id={cat.id}>
   <h3><span aria-hidden="true">{cat.emoji}</span> {tt(cat.title, lang)}</h3>
   {cat.blurb && <p class="blurb">{tt(cat.blurb, lang)}</p>}
+  {cat.caveat && <p class="caveat">⚠️ {tt(cat.caveat, lang)}</p>}
   <div class="cards">
     {cat.items.map((item) => <ResourceCard item={item} />)}
   </div>

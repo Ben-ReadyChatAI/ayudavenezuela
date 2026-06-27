@@ -8,9 +8,22 @@ const ev = site.event;
   <div class="wrap">
     <h1>{tt(ev.headline, lang)}</h1>
     <p>{tt(ev.summary, lang)}</p>
+
+    {ev.stats && (
+      <div class="stats">
+        {ev.stats.map((s) => (
+          <div class="stat">
+            <span class="stat-val">{s.value}</span>
+            <span class="stat-lbl">{tt(s.label, lang)}</span>
+          </div>
+        ))}
+      </div>
+    )}
+
     <div class="meta">
       <span class="pill">📅 Actualizado: {site.updated}</span>
       {!ev.verified && <span class="pill warn">ℹ {tt(site.ui.verifyNote, lang)}</span>}
     </div>
+    {ev.statsNote && <p class="statsnote">{tt(ev.statsNote, lang)}</p>}
   </div>
 </section>
