@@ -7,9 +7,16 @@ import ResourceSection from './ResourceSection.astro';
 import SuppliesBoard from './SuppliesBoard.astro';
 import { tt } from '../i18n.js';
 const lang = 'es';
+const classifiedsEnabled = import.meta.env.PUBLIC_CLASSIFIEDS_ENABLED === 'true';
 ---
 <EmergencyBar />
 <EventBanner />
+
+{classifiedsEnabled && (
+  <div class="wrap cl-teaser">
+    <a class="cl-cta" href="/clasificados/">📣 Clasificados — pedidos y ofertas de la comunidad →</a>
+  </div>
+)}
 
 <section class="section" aria-labelledby="recursos-h">
   <div class="wrap">

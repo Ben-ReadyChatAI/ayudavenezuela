@@ -4,6 +4,14 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm install
 COPY . .
+# Public build-time vars (Astro inlines PUBLIC_* at build). Supplied by Coolify build args.
+# The publishable/anon key is safe to expose; the secret key must NEVER be passed here.
+ARG PUBLIC_SUPABASE_URL=""
+ARG PUBLIC_SUPABASE_PUBLISHABLE_KEY=""
+ARG PUBLIC_CLASSIFIEDS_ENABLED="false"
+ENV PUBLIC_SUPABASE_URL=$PUBLIC_SUPABASE_URL
+ENV PUBLIC_SUPABASE_PUBLISHABLE_KEY=$PUBLIC_SUPABASE_PUBLISHABLE_KEY
+ENV PUBLIC_CLASSIFIEDS_ENABLED=$PUBLIC_CLASSIFIEDS_ENABLED
 RUN npm run build
 
 # ---- serve stage ----
