@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+import site from '../data/site.json';
+import { tt } from '../i18n.js';
+
+const lang = 'es';
+const { title, description } = Astro.props;
+const pageTitle = title ?? `${tt(site.brand, lang)} — ${tt(site.tagline, lang)}`;
+const pageDesc = description ?? tt(site.tagline, lang);
+const canonical = site.site ?? `https://${site.domain}/`;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#00247d" />
+    <meta name="color-scheme" content="light" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_VE" />
+    <meta property="og:site_name" content={tt(site.brand, lang)} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <a class="skip" href="#contenido">{tt(site.ui.skipToContent, lang)}</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <p class="brand">Ayuda <span class="ve">Venezuela</span></p>
+        <p class="tagline">{tt(site.tagline, lang)}</p>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="disclaimer">{tt(site.disclaimer, lang)}</p>
+        <p class="credit">{tt(site.footer.credit, lang)}</p>
+        <p class="updated">Última actualización: {site.updated}</p>
+        <a class="backtop" href="#contenido">↑ {tt(site.ui.backToTop, lang)}</a>
+      </div>
+    </footer>
+  </body>
+</html>

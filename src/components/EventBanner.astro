@@ -1,0 +1,16 @@
+---
+import site from '../data/site.json';
+import { tt } from '../i18n.js';
+const lang = 'es';
+const ev = site.event;
+---
+<section class="event">
+  <div class="wrap">
+    <h1>{tt(ev.headline, lang)}</h1>
+    <p>{tt(ev.summary, lang)}</p>
+    <div class="meta">
+      <span class="pill">📅 Actualizado: {site.updated}</span>
+      {!ev.verified && <span class="pill warn">ℹ {tt(site.ui.verifyNote, lang)}</span>}
+    </div>
+  </div>
+</section>

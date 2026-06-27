@@ -1,0 +1,26 @@
+---
+import supplies from '../data/supplies.json';
+import site from '../data/site.json';
+import { tt } from '../i18n.js';
+const lang = 'es';
+---
+<section class="section supplies" aria-labelledby="insumos-h">
+  <div class="wrap">
+    <h2 id="insumos-h">{tt(site.ui.suppliesHeading, lang)}</h2>
+    <p class="lead">{tt(site.ui.suppliesIntro, lang)}</p>
+    <div class="cards">
+      {supplies.categories.map((c) => (
+        <div class="supply">
+          <h3><span aria-hidden="true">{c.emoji}</span> {c[lang] ?? c.es}</h3>
+          {c.items.length > 0 ? (
+            <ul class="chips">
+              {c.items.map((it) => <li>{it}</li>)}
+            </ul>
+          ) : (
+            <p class="empty">{tt({ es: c.note_es, en: c.note_en }, lang)}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

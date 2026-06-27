@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "source": "Ayuda Venezuela.xlsx — LISTA DE INSUMOS REQUERIDOS (2026-06-27)",
+    "note_es": "Insumos solicitados por centros de acopio y rescatistas. Confirma necesidades vigentes con el centro de acopio antes de comprar o trasladar.",
+    "note_en": "Supplies requested by collection centers and rescue teams. Confirm current needs with the collection center before buying or transporting."
+  },
+  "categories": [
+    {
+      "id": "bebes", "emoji": "🍼", "es": "Bebés", "en": "Babies",
+      "items": ["leche de fórmula", "leche en polvo", "compotas", "pañales", "teteros", "ropita de bebé", "mantas / cobijas", "toallitas húmedas", "loción corporal"]
+    },
+    {
+      "id": "medicamentos", "emoji": "💊", "es": "Medicamentos", "en": "Medications",
+      "items": ["vitamina K", "dexametasona", "tramadol", "ketoprofeno (ampollas)", "vasoactivos", "ibuprofeno", "acetaminofén", "diclofenac", "losartán potásico", "antialérgicos", "norepinefrina", "vasopresina", "adrenalina", "analgésicos"]
+    },
+    {
+      "id": "material-medico", "emoji": "🩹", "es": "Material médico", "en": "Medical supplies",
+      "items": ["gasas", "jeringas", "jelcos", "algodón", "alcohol", "guantes", "tapabocas", "compresas", "solución fisiológica 0.9%", "macrogoteros", "buretas", "sondas vesicales", "suturas", "obturadores", "adhesivos"]
+    },
+    {
+      "id": "mascotas", "emoji": "🐾", "es": "Mascotas", "en": "Pets",
+      "items": ["perrarina", "gatarina", "comida húmeda", "kennels", "arnés y correas", "bozales", "metadol", "medicamentos de uso veterinario", "vitaminas veterinarias", "suero de hidratación veterinario", "relajantes musculares veterinarios"]
+    },
+    {
+      "id": "rescatistas", "emoji": "⛑️", "es": "Rescatistas", "en": "Rescue teams",
+      "items": ["caramelos", "agua", "guantes", "palas", "rastrillos", "cal viva", "formol", "bolsas para cadáveres (impermeables, con cierre)", "guantes gruesos de nitrilo o goma", "tapabocas", "cascos"]
+    },
+    {
+      "id": "vestuario", "emoji": "👕", "es": "Vestuario", "en": "Clothing",
+      "items": ["ropa íntima NUEVA (no usada)", "chaquetas y suéteres", "medias"]
+    },
+    {
+      "id": "higiene", "emoji": "🧼", "es": "Productos de higiene", "en": "Hygiene products",
+      "items": ["jabones", "cepillos de dientes", "crema dental", "toallas sanitarias", "papel higiénico"]
+    },
+    {
+      "id": "logistica", "emoji": "📦", "es": "Logística", "en": "Logistics",
+      "items": ["cinta plástica", "resmas de papel", "tijeras", "lapiceros", "marcadores indelebles"]
+    },
+    {
+      "id": "comida", "emoji": "🥫", "es": "Comida", "en": "Food",
+      "items": [],
+      "note_es": "Por definir — preferiblemente alimentos no perecederos.",
+      "note_en": "To be defined — preferably non-perishable food."
+    }
+  ]
+}

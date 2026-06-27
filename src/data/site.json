@@ -1,0 +1,56 @@
+{
+  "domain": "ayudavenezuela.lat",
+  "brand": { "es": "Ayuda Venezuela", "en": "Ayuda Venezuela" },
+  "tagline": {
+    "es": "Información verificada para personas afectadas por el terremoto en Venezuela.",
+    "en": "Verified information for people affected by the earthquake in Venezuela."
+  },
+  "updated": "2026-06-27",
+  "languages": { "es": "Español", "en": "English" },
+  "emergency": {
+    "verified": false,
+    "title": { "es": "Emergencias", "en": "Emergencies" },
+    "note": {
+      "es": "Si hay una emergencia que pone en riesgo la vida, contacta de inmediato a los servicios de emergencia.",
+      "en": "If there is a life-threatening emergency, contact emergency services immediately."
+    },
+    "numbers": [
+      { "num": "171", "label": { "es": "Emergencias (por verificar)", "en": "Emergencies (unverified)" } }
+    ]
+  },
+  "event": {
+    "verified": false,
+    "headline": { "es": "Terremoto en Venezuela — Junio 2026", "en": "Venezuela Earthquake — June 2026" },
+    "summary": {
+      "es": "Información sobre el sismo en verificación. Esta sección se actualizará con datos oficiales (magnitud, zonas afectadas y respuesta de emergencia).",
+      "en": "Earthquake details are being verified. This section will be updated with official data (magnitude, affected areas, and emergency response)."
+    }
+  },
+  "ui": {
+    "skipToContent": { "es": "Saltar al contenido", "en": "Skip to content" },
+    "resourcesHeading": { "es": "Recursos de ayuda", "en": "Help resources" },
+    "suppliesHeading": { "es": "Insumos requeridos", "en": "Supplies needed" },
+    "suppliesIntro": {
+      "es": "Listas de artículos solicitados por centros de acopio y rescatistas, por categoría.",
+      "en": "Lists of items requested by collection centers and rescue teams, by category."
+    },
+    "openLink": { "es": "Abrir", "en": "Open" },
+    "backToTop": { "es": "Volver arriba", "en": "Back to top" },
+    "verifyNote": {
+      "es": "Algunos enlaces están en verificación. Confirma antes de actuar o donar.",
+      "en": "Some links are being verified. Confirm before acting or donating."
+    }
+  },
+  "disclaimer": {
+    "es": "Ayuda Venezuela es un directorio que reúne enlaces e información de la comunidad. No gestionamos las campañas, bases de datos ni servicios enlazados, ni garantizamos su exactitud o disponibilidad. Verifica siempre la información en la fuente antes de actuar, trasladarte o donar.",
+    "en": "Ayuda Venezuela is a directory that gathers community links and information. We do not run the linked campaigns, databases, or services, nor do we guarantee their accuracy or availability. Always verify information at the source before acting, traveling, or donating."
+  },
+  "footer": {
+    "submit": { "es": "¿Tienes un recurso o una corrección? Escríbenos.", "en": "Have a resource or a correction? Contact us." },
+    "submitUrl": null,
+    "credit": {
+      "es": "Hecho con solidaridad para Venezuela. 🇻🇪",
+      "en": "Made in solidarity with Venezuela. 🇻🇪"
+    }
+  }
+}

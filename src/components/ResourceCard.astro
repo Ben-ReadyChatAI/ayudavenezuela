@@ -1,0 +1,33 @@
+---
+import { tt, hostOf } from '../i18n.js';
+const lang = 'es';
+const { item } = Astro.props;
+
+const typeIcon = {
+  website: '🔗',
+  telegram: '✈️',
+  file: '📄',
+  donation: '💚',
+  social: '📱',
+};
+const statusLabel = {
+  active: { txt: 'Activo', cls: 'ok' },
+  'needs-check': { txt: 'Por verificar', cls: 'warn' },
+};
+const st = statusLabel[item.status] ?? statusLabel['needs-check'];
+const ico = typeIcon[item.type] ?? '🔗';
+const sub = item.url ? hostOf(item.url) : (item.handle ?? '');
+const Tag = item.url ? 'a' : 'div';
+---
+<Tag
+  class="card"
+  {...item.url ? { href: item.url, target: '_blank', rel: 'noopener noreferrer' } : {}}
+>
+  <div class="top">
+    <span class="name">{item.name}</span>
+    <span class="ico" aria-hidden="true">{ico}</span>
+  </div>
+  {sub && <span class="host">{sub}</span>}
+  {item.note && <span class="cnote">{tt(item.note, lang)}</span>}
+  <span class={`badge ${st.cls}`}>{st.txt}</span>
+</Tag>

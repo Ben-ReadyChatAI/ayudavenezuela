@@ -1,0 +1,15 @@
+---
+import site from '../data/site.json';
+import { tt } from '../i18n.js';
+const lang = 'es';
+const e = site.emergency;
+---
+<aside class="emergency" aria-label={tt(e.title, lang)}>
+  <div class="wrap">
+    <strong>⚠ {tt(e.title, lang)}</strong>
+    {e.numbers.map((n) => (
+      <a class="num" href={`tel:${n.num}`}>{n.num} · {tt(n.label, lang)}</a>
+    ))}
+    <span class="enote">{tt(e.note, lang)}</span>
+  </div>
+</aside>

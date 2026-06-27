@@ -1,0 +1,22 @@
+---
+import resources from '../data/resources.json';
+import site from '../data/site.json';
+import EmergencyBar from './EmergencyBar.astro';
+import EventBanner from './EventBanner.astro';
+import ResourceSection from './ResourceSection.astro';
+import SuppliesBoard from './SuppliesBoard.astro';
+import { tt } from '../i18n.js';
+const lang = 'es';
+---
+<EmergencyBar />
+<EventBanner />
+
+<section class="section" aria-labelledby="recursos-h">
+  <div class="wrap">
+    <h2 id="recursos-h">{tt(site.ui.resourcesHeading, lang)}</h2>
+    <p class="lead">{tt(resources.meta.note_es ? { es: resources.meta.note_es } : site.tagline, lang)}</p>
+    {resources.categories.map((cat) => <ResourceSection cat={cat} />)}
+  </div>
+</section>
+
+<SuppliesBoard />
