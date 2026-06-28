@@ -1,47 +1,49 @@
 {
   "meta": {
-    "source": "Ayuda Venezuela.xlsx — LISTA DE INSUMOS REQUERIDOS (2026-06-27)",
-    "note_es": "Insumos solicitados por centros de acopio y rescatistas. Confirma necesidades vigentes con el centro de acopio antes de comprar o trasladar.",
-    "note_en": "Supplies requested by collection centers and rescue teams. Confirm current needs with the collection center before buying or transporting."
+    "source": "Ayuda Venezuela — LISTA DE INSUMOS REQUERIDOS (actualizada por la comunidad 2026-06-28)",
+    "note_es": "Insumos solicitados por los centros de acopio desplegados en todo el país y por los rescatistas. Confirma necesidades vigentes con el centro de acopio antes de comprar o trasladar. Revisa fechas de vencimiento de los productos.",
+    "note_en": "Supplies requested by collection centers nationwide and by rescue teams. Confirm current needs with the collection center before buying or transporting. Check product expiration dates."
   },
   "categories": [
     {
       "id": "bebes", "emoji": "🍼", "es": "Bebés", "en": "Babies",
-      "items": ["leche de fórmula", "leche en polvo", "compotas", "pañales", "teteros", "ropita de bebé", "mantas / cobijas", "toallitas húmedas", "loción corporal"]
+      "items": ["leche de fórmula", "leche en polvo", "compotas", "pañales", "teteros", "chupones", "ropita de bebé", "mantas / cobijas", "toallitas húmedas", "champú para niños", "loción corporal", "juguetes que no requieran pilas"]
     },
     {
       "id": "medicamentos", "emoji": "💊", "es": "Medicamentos", "en": "Medications",
-      "items": ["vitamina K", "dexametasona", "tramadol", "ketoprofeno (ampollas)", "vasoactivos", "ibuprofeno", "acetaminofén", "diclofenac", "losartán potásico", "antialérgicos", "norepinefrina", "vasopresina", "adrenalina", "analgésicos"]
+      "items": ["analgésicos", "vasoactivos", "anticonvulsionantes", "antihipertensivos", "antialérgicos", "vitamina K", "acetaminofén (paracetamol) 500 mg tabletas y jarabe", "ibuprofeno (jarabe y tabletas 400/600/800 mg)", "diclofenac 50 mg tabletas y jarabe", "meloxicam 15 mg tabletas", "tramadol", "ketoprofeno (ampollas)", "amoxicilina + ácido clavulánico 500/125 mg tabletas y jarabe", "dexametasona", "norepinefrina", "vasopresina", "adrenalina", "cefixime", "ciprofloxacina", "metronidazol suspensión / tabletas 500 mg", "albendazol suspensión", "sitagliptina con metformina", "dipirona", "metoclopramida", "loratadina", "cefadroxilo 500 mg tabletas y jarabe", "benzetacil 2.400.000 UI"]
     },
     {
       "id": "material-medico", "emoji": "🩹", "es": "Material médico", "en": "Medical supplies",
-      "items": ["gasas", "jeringas", "jelcos", "algodón", "alcohol", "guantes", "tapabocas", "compresas", "solución fisiológica 0.9%", "macrogoteros", "buretas", "sondas vesicales", "suturas", "obturadores", "adhesivos"]
+      "items": ["gasas estériles (se requiere gran cantidad)", "clorhexidina (se requiere gran cantidad)", "Ringer lactato (se requiere gran cantidad)", "solución fisiológica 0.9% (se requiere gran cantidad)", "solución dextrosa 5%", "guantes de faena (tallas M, L, S)", "guantes estériles (tallas 6, 7, 8)", "tapabocas", "alcohol", "alcohol en gel", "adhesivos", "apósitos absorbentes", "jeringas 5/10/20 cc", "algodón", "agua oxigenada", "compresas", "macrogoteros", "buretas", "jelcos 20G / 22G", "suturas no absorbibles (nylon y Vicryl 2.0, aguja curva y recta)", "sondas vesicales", "yeso", "guata", "obturadores", "oxímetro de pulso", "toallas clínicas", "Gerdex", "Pedialite", "termómetros", "curitas", "vendas elásticas", "vendaje triangular", "férulas moldeables", "tijeras de punta roma", "pinzas", "tensiómetros", "linternas con pilas", "bolsas para residuos", "manta térmica"]
     },
     {
       "id": "mascotas", "emoji": "🐾", "es": "Mascotas", "en": "Pets",
-      "items": ["perrarina", "gatarina", "comida húmeda", "kennels", "arnés y correas", "bozales", "metadol", "medicamentos de uso veterinario", "vitaminas veterinarias", "suero de hidratación veterinario", "relajantes musculares veterinarios"]
+      "items": ["perrarina", "gatarina", "comida húmeda", "alimentos enlatados para mascotas", "kennels y jaulas", "arnés, pecheras y correas", "bozales", "collares isabelinos", "suero de hidratación veterinario", "multivitamínicos de uso veterinario", "relajantes musculares para perros rescatistas", "Metadol", "Oxitetraciclina", "Combecon", "Eritrogen", "Bioxin", "Dipirona", "Fynacol", "Sularzin (crema para heridas)", "antibióticos", "antiinflamatorios", "ácido fólico", "hierro", "gasas", "vendas", "tapabocas", "guantes", "agua oxigenada", "alcohol en gel", "adhesivo", "yeso", "bolsas de desechos"]
     },
     {
       "id": "rescatistas", "emoji": "⛑️", "es": "Rescatistas", "en": "Rescue teams",
-      "items": ["caramelos", "agua", "guantes", "palas", "rastrillos", "cal viva", "formol", "bolsas para cadáveres (impermeables, con cierre)", "guantes gruesos de nitrilo o goma", "tapabocas", "cascos"]
+      "items": ["caramelos", "agua mineral embotellada", "guantes de construcción", "guantes gruesos de nitrilo o goma", "palas", "rastrillos", "cal", "formol", "cascos", "lentes para rescate", "tapabocas", "alcohol en gel", "marcadores indelebles", "bolsas para cadáveres (impermeables, con cierre)"]
     },
     {
       "id": "vestuario", "emoji": "👕", "es": "Vestuario", "en": "Clothing",
-      "items": ["ropa íntima NUEVA (no usada)", "chaquetas y suéteres", "medias"]
+      "items": ["ropa íntima NO USADA", "chaquetas y suéteres", "medias", "ropa cómoda para niños y adultos en muy buen estado y lavada (evitar ropa de fiesta, de playa o disfraces)", "zapatos en muy buen estado (evitar tacones y zapatos de fiesta)"]
     },
     {
       "id": "higiene", "emoji": "🧼", "es": "Productos de higiene", "en": "Hygiene products",
-      "items": ["jabones", "cepillos de dientes", "crema dental", "toallas sanitarias", "papel higiénico"]
+      "items": ["jabones", "champú", "cepillos de dientes", "crema dental", "desodorantes", "toallas sanitarias", "papel higiénico", "pañales para adultos", "repelente de insectos", "protector solar"]
+    },
+    {
+      "id": "refugio", "emoji": "⛺", "es": "Refugio", "en": "Shelter",
+      "items": ["colchones", "almohadas", "cobijas / sábanas / edredones", "carpas", "linternas con pilas", "cloro", "desinfectante", "bolsas para residuos", "cepillos para barrer en buen estado"]
     },
     {
       "id": "logistica", "emoji": "📦", "es": "Logística", "en": "Logistics",
-      "items": ["cinta plástica", "resmas de papel", "tijeras", "lapiceros", "marcadores indelebles"]
+      "items": ["cinta plástica", "resmas de papel", "tijeras", "lapiceros", "marcadores indelebles", "pilas", "power bank"]
     },
     {
       "id": "comida", "emoji": "🥫", "es": "Comida", "en": "Food",
-      "items": [],
-      "note_es": "Por definir — preferiblemente alimentos no perecederos.",
-      "note_en": "To be defined — preferably non-perishable food."
+      "items": ["enlatados (atún, sardinas, vegetales, granos listos para consumir)", "arroz", "pasta", "granos secos (lentejas, arvejas, frijoles)", "harina de maíz", "leche en polvo", "aceite para cocinar", "galletas (dulces y saladas)", "barras de cereal", "barras energéticas", "sal", "azúcar", "agua potable", "agua embotellada", "bebidas hidratantes (sueros o isotónicas)"]
     }
   ]
 }
