@@ -76,8 +76,8 @@
       "title": { "es": "Donar — canales oficiales", "en": "Donate — official channels" },
       "blurb": { "es": "Organizaciones internacionales y de la Iglesia para apoyar a las víctimas.", "en": "International and Church organizations to support victims." },
       "caveat": {
-        "es": "Verifica antes de donar. Prefiere organizaciones registradas con trayectoria; evita pagos por criptomonedas, tarjetas de regalo o billeteras anónimas.",
-        "en": "Verify before donating. Prefer registered organizations; avoid crypto, gift cards, or anonymous wallets."
+        "es": "Verifica antes de donar. Prefiere organizaciones registradas con trayectoria.",
+        "en": "Verify before donating. Prefer registered organizations with a track record."
       },
       "items": [
         { "name": "ONU (OCHA) — Fondo Humanitario para Venezuela", "url": "https://crisisrelief.un.org/venezuela", "type": "donation", "status": "active", "note": { "es": "Oficina de la ONU para Asuntos Humanitarios (OCHA).", "en": "UN Office for the Coordination of Humanitarian Affairs (OCHA)." } },
