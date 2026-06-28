@@ -92,6 +92,8 @@ const categorias = ['Refugio','Alimentos','Agua','Medicinas','Transporte','Volun
     <script define:vars={{ SUPABASE_URL, SUPABASE_ANON, RELAY: relayEnabled }}>
       const REST = SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/clasificados';
       const FUNC = SUPABASE_URL.replace(/\/$/, '') + '/functions/v1/contactar';
+      // explicit columns — never select=* (the private `email` column is not readable by anon)
+      const COLS = 'id,created_at,tipo,categoria,titulo,descripcion,estado,ciudad,contacto_tipo,whatsapp,status';
       const headers = { apikey: SUPABASE_ANON, Authorization: 'Bearer ' + SUPABASE_ANON };
       const listEl = document.getElementById('cl-list');
       const emptyEl = document.getElementById('cl-empty');
@@ -172,7 +174,7 @@ const categorias = ['Refugio','Alimentos','Agua','Medicinas','Transporte','Volun
 
       async function load() {
         try {
-          const r = await fetch(REST + '?select=*&status=eq.publicado&order=created_at.desc&limit=100', { headers });
+          const r = await fetch(REST + '?select=' + COLS + '&status=eq.publicado&order=created_at.desc&limit=100', { headers });
           if (!r.ok) throw new Error('HTTP ' + r.status);
           const rows = await r.json();
           listEl.innerHTML = '';
@@ -202,7 +204,7 @@ const categorias = ['Refugio','Alimentos','Agua','Medicinas','Transporte','Volun
         if (payload.contacto_tipo === 'email' && !/.+@.+\..+/.test(payload.email || '')) { msg.textContent = 'Escribe un email válido.'; return; }
         msg.textContent = 'Publicando…';
         try {
-          const r = await fetch(REST, { method: 'POST', headers: { ...headers, 'Content-Type': 'application/json', Prefer: 'return=representation' }, body: JSON.stringify(payload) });
+          const r = await fetch(REST + '?select=' + COLS, { method: 'POST', headers: { ...headers, 'Content-Type': 'application/json', Prefer: 'return=representation' }, body: JSON.stringify(payload) });
           if (!r.ok) throw new Error('HTTP ' + r.status);
           const [row] = await r.json();
           msg.textContent = '¡Publicado! Gracias.';
