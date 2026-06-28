@@ -63,7 +63,7 @@
     },
     {
       "id": "donaciones",
-      "emoji": "💚",
+      "emoji": "❤️",
       "title": { "es": "Donar", "en": "Donate" },
       "blurb": { "es": "Campañas para apoyar a las víctimas.", "en": "Campaigns to support victims." },
       "caveat": {

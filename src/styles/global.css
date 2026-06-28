@@ -3,29 +3,29 @@
    Bright, friendly, Venezuelan. Type: Hanken Grotesk.
    ============================================================ */
 :root {
-  /* Venezuelan flag palette — amarillo / azul / rojo */
+  /* Venezuelan flag palette — amarillo #FFCC00 / azul #003DA5 / rojo #CF142B */
   --arena: #f7f8fb;       /* light neutral background */
   --arena-2: #eef1f7;
   --card: #ffffff;
-  --tinta: #16213e;       /* deep blue ink */
+  --tinta: #142244;       /* deep flag-blue ink */
   --muted: #5b647a;
   --linea: #e3e7f0;       /* hairline */
 
-  --sol: #f5c211;         /* amarillo bandera — accent + stars */
-  --sol-700: #b3890a;
-  --sol-100: #fdeeb6;
-  --verde: #0a37a0;       /* azul bandera — primary (links/actions). name kept for legacy rules */
-  --verde-700: #082c80;
-  --verde-50: #e7edfa;
-  --rojo: #d11d3a;        /* rojo bandera */
-  --rojo-700: #ab1530;
-  --rojo-50: #fbe6e9;
-  --cielo: #2a5bbf;       /* secondary blue */
-  --avila: #082c80;       /* mountains / footer = deep blue */
-  --avila-back: #4f72c8;
+  --sol: #ffcc00;         /* amarillo bandera */
+  --sol-700: #9c7800;     /* darker amber for text on light */
+  --sol-100: #fff1bd;
+  --verde: #003da5;       /* azul bandera — primary (links/actions). legacy name */
+  --verde-700: #002d7a;
+  --verde-50: #e4ecf9;
+  --rojo: #cf142b;        /* rojo bandera */
+  --rojo-700: #a30f21;
+  --rojo-50: #fbe4e7;
+  --cielo: #2f5fc0;       /* secondary blue */
+  --avila: #002a78;       /* mountains / footer = deep flag blue */
+  --avila-back: #4f6fc0;
 
-  --ok-bg: #e7edfa; --ok-fg: #0a37a0;   /* "Verificado" badge = blue */
-  --warn-bg: #fdeeb6; --warn-fg: #8a6308;
+  --ok-bg: #e4ecf9; --ok-fg: #003da5;   /* "Verificado" badge = blue */
+  --warn-bg: #fff1bd; --warn-fg: #7a5e00;
 
   --font: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --maxw: 1080px;
@@ -36,7 +36,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
 
 body { margin: 0; font-family: var(--font); color: var(--tinta); background: var(--arena); line-height: 1.6; -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; }
