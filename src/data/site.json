@@ -58,6 +58,8 @@
   "footer": {
     "submit": { "es": "¿Tienes un recurso, una corrección o un enlace caído? Sugiérelo aquí.", "en": "Have a resource, correction, or broken link? Suggest it here." },
     "submitUrl": "https://github.com/Ben-ReadyChatAI/ayudavenezuela/issues/new?template=resource.yml",
+    "contactEmail": "contacto@ayudavenezuela.lat",
+    "contact": { "es": "¿Tienes notas, correcciones o sugerencias? Escríbenos a", "en": "Have notes, corrections, or suggestions? Email us at" },
     "credit": {
       "es": "Hecho con solidaridad para Venezuela. 🇻🇪",
       "en": "Made in solidarity with Venezuela. 🇻🇪"

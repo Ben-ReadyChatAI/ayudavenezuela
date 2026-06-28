@@ -71,6 +71,11 @@ const canonical = site.site ?? `https://${site.domain}/`;
             <a href={site.footer.submitUrl} target="_blank" rel="noopener noreferrer">✏️ {tt(site.footer.submit, lang)}</a>
           </p>
         )}
+        {site.footer.contactEmail && (
+          <p class="contact">
+            📧 {tt(site.footer.contact, lang)} <a href={`mailto:${site.footer.contactEmail}`}>{site.footer.contactEmail}</a>
+          </p>
+        )}
         <p class="credit">{tt(site.footer.credit, lang)}</p>
         <p class="updated">Última actualización: {site.updated}</p>
         <a class="backtop" href="#contenido">↑ {tt(site.ui.backToTop, lang)}</a>
