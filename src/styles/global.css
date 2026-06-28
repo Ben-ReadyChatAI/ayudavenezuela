@@ -53,12 +53,12 @@ img, svg { display: block; max-width: 100%; }
 .site-header { position: relative; overflow: hidden; background: linear-gradient(176deg, #fdf0c4 0%, #fdf8ea 46%, #e6edfb 100%); }
 .site-header .sun { position: absolute; top: -52px; left: 50%; width: 150px; height: 150px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(255,221,140,.9) 0%, rgba(255,210,120,.45) 40%, transparent 70%); pointer-events: none; }
 .site-header .avila { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(16px, 2.2vw, 24px); pointer-events: none; z-index: 0; }
-.header-row { position: relative; z-index: 1; display: flex; align-items: baseline; justify-content: space-between; gap: 4px 24px; flex-wrap: wrap; padding-block: 13px 30px; }
+.header-row { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 4px 24px; flex-wrap: wrap; padding-block: 13px 30px; }
 .brand { font-weight: 800; color: var(--tinta); font-size: clamp(1.45rem, 3.4vw, 1.9rem); line-height: 1.05; margin: 0; letter-spacing: -0.03em; }
 .brand .ve { color: var(--rojo); }
 .brand-lockup { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
 .logo { width: 44px; height: 44px; flex: none; border-radius: 11px; background: #fff; padding: 2px; box-shadow: 0 2px 9px -3px rgba(44, 33, 20, .3); transform: translateY(2px); }
-.tagline { margin: 0; color: #5a4a32; font-size: 0.9rem; max-width: 44ch; font-weight: 500; text-align: right; }
+.tagline { margin: 0; color: #5a4a32; font-size: 0.9rem; max-width: none; font-weight: 500; text-align: right; }
 
 /* sticky quick-nav */
 .quick { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,.95); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--linea); box-shadow: 0 4px 14px -10px rgba(44,33,20,.4); }
