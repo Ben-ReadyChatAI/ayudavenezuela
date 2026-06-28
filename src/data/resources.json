@@ -10,21 +10,6 @@
   },
   "categories": [
     {
-      "id": "oficial",
-      "emoji": "🆘",
-      "title": { "es": "Información oficial y emergencias", "en": "Official information & emergencies" },
-      "blurb": {
-        "es": "Canales oficiales del Estado y agencias para reportar emergencias y verificar información. Confía en FUNVISIS, USGS y Protección Civil para datos del sismo.",
-        "en": "Official state and agency channels to report emergencies and verify information."
-      },
-      "items": [
-        { "name": "VenApp — Reportar personas", "url": "https://www.venapp.com/", "type": "app", "status": "active", "note": { "es": "App oficial para reportar personas atrapadas o desaparecidas al Centro de Comando de Emergencias.", "en": "Official app to report trapped or missing people to the Emergency Command Center." } },
-        { "name": "FUNVISIS", "url": "http://www.funvisis.gob.ve/", "type": "website", "status": "active", "note": { "es": "Agencia sísmica oficial: magnitudes y réplicas.", "en": "Official seismic agency: magnitudes and aftershocks." } },
-        { "name": "Protección Civil", "handle": "@PCivil_Ve", "url": "https://x.com/PCivil_Ve", "type": "social", "status": "active", "note": { "es": "También en Instagram: @pcivil_venezuela.", "en": "Also on Instagram: @pcivil_venezuela." } },
-        { "name": "Cruz Roja Venezolana", "handle": "@CruzRojaVe", "url": "https://x.com/CruzRojaVe", "type": "social", "status": "active" }
-      ]
-    },
-    {
       "id": "personas",
       "emoji": "🔎",
       "title": { "es": "Buscar personas desaparecidas", "en": "Find missing people" },
@@ -102,6 +87,21 @@
         { "name": "Psicólogos Sin Fronteras Venezuela", "handle": "@psfvenezuela", "url": "https://www.instagram.com/psfvenezuela/", "type": "social", "status": "active", "note": { "es": "Apoyo psicosocial en emergencias. También en X.", "en": "Psychosocial support in emergencies. Also on X." } },
         { "name": "Federación de Psicólogos de Venezuela", "handle": "@fpv_ve", "url": "https://www.instagram.com/fpv_ve/", "type": "social", "status": "active", "note": { "es": "En X: @fpv_vzla.", "en": "On X: @fpv_vzla." } },
         { "name": "Universidad Metropolitana (UNIMET)", "handle": "@unimet", "url": "https://www.instagram.com/unimet/", "type": "social", "status": "active", "note": { "es": "Programas de apoyo psicológico.", "en": "Psychological support programs." } }
+      ]
+    },
+    {
+      "id": "oficial",
+      "emoji": "🏛️",
+      "title": { "es": "Información oficial y emergencias", "en": "Official information & emergencies" },
+      "blurb": {
+        "es": "Canales del Estado y agencias. Para datos del sismo: FUNVISIS y USGS. Líneas de emergencia: 911 · 171 (CANTV) · Protección Civil 0800-5588427 / 0800-2668446 / 0800-2624368.",
+        "en": "State and agency channels. Earthquake data: FUNVISIS and USGS. Emergency lines: 911 · 171 (CANTV) · Civil Protection 0800-5588427 / 0800-2668446 / 0800-2624368."
+      },
+      "items": [
+        { "name": "VenApp — Reportar personas", "url": "https://www.venapp.com/", "type": "app", "status": "active", "note": { "es": "App oficial para reportar personas atrapadas o desaparecidas.", "en": "Official app to report trapped or missing people." } },
+        { "name": "FUNVISIS", "url": "http://www.funvisis.gob.ve/", "type": "website", "status": "active", "note": { "es": "Agencia sísmica oficial: magnitudes y réplicas.", "en": "Official seismic agency." } },
+        { "name": "Protección Civil", "handle": "@PCivil_Ve", "url": "https://x.com/PCivil_Ve", "type": "social", "status": "active", "note": { "es": "También en Instagram: @pcivil_venezuela.", "en": "Also on Instagram: @pcivil_venezuela." } },
+        { "name": "Cruz Roja Venezolana", "handle": "@CruzRojaVe", "url": "https://x.com/CruzRojaVe", "type": "social", "status": "active" }
       ]
     }
   ]

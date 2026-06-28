@@ -1,0 +1,167 @@
+{
+  "_meta": {
+    "purpose": "PROPOSED additions for src/data/resources.json — NOT yet wired into the site. For admin review/approval before adapting into code.",
+    "compiled": "2026-06-27",
+    "method": "Multi-agent web research + independent HTTP verification (curl -L) on 2026-06-27. Each item carries a _review block: http status, confidence (HIGH/MEDIUM/LOW), and notes.",
+    "statusConvention": "status='active' = HIGH-confidence + verified; status='needs-check' = MEDIUM/LOW confidence, time-bound, or needs a final human check before publishing.",
+    "dedupeNotes": [
+      "World Central Kitchen found by two agents; kept the quake-specific org page (wck.org/relief/...), dropped the deep donate deep-link.",
+      "ICRC Restoring Family Links / familylinks.icrc.org found by shelters + diaspora agents; merged into one reunificacion entry.",
+      "Cruz Roja Venezolana website (cruzroja.ve) is NEW; existing site only lists the @CruzRojaVe social handle."
+    ],
+    "linkCheckerWarnings": [
+      "familylinks.icrc.org returns 403 to bots (Akamai) but is live in browsers — link out to icrc.org/.../venezuela instead if your checker is strict.",
+      "redcross.org and several NGO sites (unicef, unhcr, crs) return 403/403 to bare curl (WAF) but 200 with a browser User-Agent — real pages.",
+      "FUNVISIS monitor is HTTP-only (no TLS) — link out, do NOT iframe on the HTTPS site (mixed content)."
+    ]
+  },
+  "newCategories": [
+    {
+      "id": "albergues",
+      "emoji": "🏠",
+      "title": { "es": "Albergues y centros de acopio", "en": "Shelters & collection centers" },
+      "blurb": {
+        "es": "No existe una lista oficial única de albergues. Estos mapas ciudadanos ubican refugios y centros de acopio; confirma antes de trasladarte.",
+        "en": "No single official shelter list exists. These citizen maps locate refuges and collection points; confirm before traveling."
+      },
+      "caveat": {
+        "es": "Datos colaborativos sin validación oficial. Verifica el punto antes de ir y no envíes dinero a desconocidos.",
+        "en": "Crowdsourced, not officially validated. Verify a location before going and never send money to strangers."
+      },
+      "items": [
+        { "name": "Caracas Ayuda — Mapa de refugios y acopio", "url": "https://caracasayuda.com/", "type": "website", "status": "needs-check", "note": { "es": "Mapa colaborativo sin fines de lucro (operador: Caracas Merch); ubica albergues y centros de acopio. Datos aportados por usuarios.", "en": "Nonprofit crowdsourced map (operator: Caracas Merch) of shelters and collection centers. User-submitted points." }, "_review": { "http": "200", "confidence": "MEDIUM", "why": "One of few maps plotting albergues + acopio with a named non-government operator; no crypto/scam solicitation.", "privacy": "Collects optional name/phone + location from contributors; retention policy unverified." } },
+        { "name": "Central de Ayuda Venezuela — Directorio", "url": "https://centraldeayudavenezuela.com/", "type": "website", "status": "needs-check", "note": { "es": "Directorio que enlaza a mapas comunitarios de albergues y acopio; no almacena datos y advierte explícitamente contra estafas.", "en": "Directory linking out to community shelter/collection maps; stores no data and explicitly warns against scams." }, "_review": { "http": "200", "confidence": "MEDIUM", "why": "Scam-aware hub that only links out (no PII held).", "privacy": "Low — links out only.", "caveat": "Operator anonymous; label as community aggregator." } }
+      ]
+    },
+    {
+      "id": "reunificacion",
+      "emoji": "👨‍👩‍👧",
+      "title": { "es": "Reunificación familiar (Cruz Roja / CICR)", "en": "Family reunification (Red Cross / ICRC)" },
+      "blurb": {
+        "es": "Canal neutral y gratuito de la Cruz Roja y el CICR para reportar o buscar familiares separados por el terremoto.",
+        "en": "Neutral, free Red Cross / ICRC channel to report or search for relatives separated by the quake."
+      },
+      "items": [
+        { "name": "CICR / Cruz Roja Venezolana — Restablecimiento del Contacto entre Familiares", "url": "https://www.icrc.org/es/donde-trabajamos/venezuela", "type": "website", "status": "active", "note": { "es": "Línea de Restablecimiento del Contacto entre Familiares: Tel. 0422-799 4880 · correo centrocontactove@icrc.org. Reporta o busca a un ser querido.", "en": "Restoring Family Links line: Tel. 0422-799 4880 · email centrocontactove@icrc.org. Report or search for a loved one." }, "_review": { "http": "200 (icrc.org VE page); phone confirmed across El Impulso/Canal1/Expreso", "confidence": "HIGH", "why": "Most authoritative reunification mechanism operating inside Venezuela for this event.", "caveat": "Email came from one aggregated source — confirm before publishing. Links to icrc.org VE page because familylinks.icrc.org 403s bots." } },
+        { "name": "CICR — Restoring Family Links (servicio mundial)", "url": "https://familylinks.icrc.org/", "type": "website", "status": "needs-check", "note": { "es": "Servicio mundial gratuito del CICR para localizar y reconectar familiares separados por desastres.", "en": "ICRC global free tracing service to reconnect relatives separated by disaster." }, "_review": { "http": "403 to bots (live in browser)", "confidence": "HIGH", "why": "Standing umbrella service behind the VE line.", "caveat": "403s automated link-checkers — prefer linking the icrc.org VE page above." } },
+        { "name": "Cruz Roja Colombiana — RCF (familiares en Colombia)", "url": "https://www.cruzrojacolombiana.org/", "type": "website", "status": "needs-check", "note": { "es": "Para venezolanos en Colombia que no logran contactar a familiares: WhatsApp 321 213 9525 · rcf@cruzrojacolombiana.org · línea 132.", "en": "For Venezuelans in Colombia trying to reach relatives back home: Colombian Red Cross RFL lines, coordinated with Venezuelan Red Cross." }, "_review": { "http": "homepage 200; contacts confirmed Canal1/El País Cali/Semana", "confidence": "HIGH", "why": "Serves the large diaspora in Colombia.", "caveat": "Secondary given the site's Venezuela focus." } }
+      ]
+    },
+    {
+      "id": "seguridad-preparacion",
+      "emoji": "📋",
+      "title": { "es": "Seguridad sísmica y réplicas", "en": "Earthquake safety & aftershocks" },
+      "blurb": {
+        "es": "Qué hacer durante y después de un sismo y sus réplicas, y datos sísmicos en tiempo real.",
+        "en": "What to do during and after a quake and its aftershocks, plus real-time seismic data."
+      },
+      "items": [
+        { "name": "Cruz Roja Americana — Terremotos (Agáchate, cúbrete, agárrate)", "url": "https://www.redcross.org/cruz-roja/obtener-ayuda/tipos-de-emergencias/terremotos.html", "type": "website", "status": "active", "note": { "es": "Guía en español: qué hacer durante el sismo, durante las réplicas e inspección de daños estructurales.", "en": "Spanish guide: what to do during the quake, during aftershocks, and structural-damage inspection." }, "_review": { "http": "200 with browser UA (403 to bare curl)", "confidence": "HIGH", "why": "Best Spanish coverage of aftershock behavior specifically." } },
+        { "name": "Cruz Roja Española — ¿Qué hacer en caso de terremotos?", "url": "https://www2.cruzroja.es/web/ahora/-/que-hacer-terremotos", "type": "website", "status": "active", "note": { "es": "Pasos antes, durante y después: protegerse la cabeza, no usar ascensores, cortar gas/agua/luz, evaluar daños.", "en": "Before/during/after steps from the Spanish Red Cross." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Authoritative, fully Spanish, actionable." } },
+        { "name": "USGS — Sismo M7.5 (Venezuela): ShakeMap y pronóstico de réplicas", "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000t7zp", "type": "website", "status": "active", "note": { "es": "Página oficial del sismo principal con ShakeMap, «¿Lo sintió?» y pronóstico de réplicas. (Antesismo M7.2: us6000t7zc).", "en": "Official mainshock event page with ShakeMap, Did You Feel It, and aftershock forecast." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Directly tied to THIS event." } },
+        { "name": "USGS — Sismos recientes (mapa en tiempo real)", "url": "https://earthquake.usgs.gov/earthquakes/map/", "type": "website", "status": "active", "note": { "es": "Mapa interactivo de sismos M2.5+ en tiempo real; filtra Venezuela para ver réplicas.", "en": "Real-time interactive map of M2.5+ quakes; filter to Venezuela for live aftershocks." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Durable institutional real-time feed." } },
+        { "name": "FUNVISIS — Monitor de Sismos", "url": "http://www.funvisis.gob.ve/monitor.html", "type": "website", "status": "needs-check", "note": { "es": "Monitor oficial venezolano de sismos y réplicas; permite reportar movimientos percibidos.", "en": "Official Venezuelan seismic agency live monitor." }, "_review": { "http": "200 (HTTP only — no HTTPS)", "confidence": "MEDIUM", "why": "Official national aftershock monitor.", "caveat": "HTTP-only — link out, do NOT iframe (mixed content on HTTPS site)." } },
+        { "name": "Earthquake Country Alliance — Los Siete Pasos para la Seguridad (PDF)", "url": "https://www.earthquakecountry.org/library/ECA_Your_Action_Plan_For_The_Seven_Steps-SP.pdf", "type": "file", "status": "needs-check", "note": { "es": "Plan de acción de 7 pasos (asegurar, protegerse, kit, plan familiar) en español.", "en": "7-step action plan (secure, protect, kit, family plan) in Spanish." }, "_review": { "http": "200", "confidence": "MEDIUM", "why": "Recognized preparedness program; supplement (preparedness-leaning vs acute response)." } }
+      ]
+    },
+    {
+      "id": "salud-publica",
+      "emoji": "🚰",
+      "title": { "es": "Salud pública en la emergencia", "en": "Public health in the emergency" },
+      "blurb": {
+        "es": "Guías oficiales para prevenir enfermedades tras el sismo: agua potable, saneamiento, albergues y manejo de cadáveres.",
+        "en": "Official guidance to prevent disease after the quake: safe water, sanitation, shelters, and body management."
+      },
+      "items": [
+        { "name": "OPS/OMS — Respuesta a los terremotos en Venezuela 2026", "url": "https://www.paho.org/es/terremotos-venezuela-2026", "type": "website", "status": "active", "note": { "es": "La OPS coordina la respuesta sanitaria, equipos médicos de emergencia y suministros con el Ministerio de Salud.", "en": "PAHO coordinating the health response, Emergency Medical Teams and supplies with the Health Ministry." }, "_review": { "http": "200", "confidence": "HIGH", "why": "WHO regional office; authoritative quake-specific health/situation info (not a donation site)." } },
+        { "name": "OPS/OMS — Agua, saneamiento e higiene en emergencias", "url": "https://www.paho.org/es/emergencias-salud/notas-tecnicas-sobre-agua-saneamiento-e-higiene-emergencias", "type": "website", "status": "active", "note": { "es": "Notas técnicas: tratamiento y cloración de agua potable, saneamiento y planificación en albergues.", "en": "WASH technical notes: safe drinking water, chlorination, sanitation in shelters." }, "_review": { "http": "200", "confidence": "HIGH", "why": "UN/PAHO authority on disease prevention post-quake." } },
+        { "name": "OPS/OMS — La gestión de cadáveres en situaciones de desastre (guía)", "url": "https://www.paho.org/es/documentos/gestion-cadaveres-situaciones-desastre-guia-practica-para-equipos-respuesta-2009", "type": "website", "status": "active", "note": { "es": "Guía práctica para la recuperación, identificación y manejo digno de cadáveres por equipos y comunidades.", "en": "Field manual for dignified dead-body management — the recognized standard." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Sensitive but essential given the casualty count.", "caveat": "Sensitive content — present with care." } }
+      ]
+    },
+    {
+      "id": "donar-sangre",
+      "emoji": "🩸",
+      "title": { "es": "Donar sangre", "en": "Donate blood" },
+      "blurb": {
+        "es": "Dónde donar sangre para las víctimas del sismo. Requisitos generales: cédula, 18–65 años, +50 kg.",
+        "en": "Where to donate blood for quake victims. General requirements: national ID, ages 18–65, 50kg+."
+      },
+      "items": [
+        { "name": "Centros habilitados en Caracas para donar sangre (lista)", "url": "https://www.eluniversal.com/venezuela/236117/conoce-los-centros-de-salud-habilitados-en-caracas-para-donar-sangre-a-victimas-del-sismo", "type": "website", "status": "needs-check", "note": { "es": "7 centros (26–28 jun, 7am–4pm): Hosp. José Gregorio Hernández (Catia), Hosp. Universitario de Caracas, Banco Municipal de Sangre, Hosp. Pérez de León II, Hosp. Domingo Luciani, Hemocentro de Chacao, Hosp. Victorino Santaella.", "en": "7 habilitated centers (Jun 26–28, 7am–4pm) per the Health Ministry campaign." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Concrete where-to-donate list from an established outlet.", "caveat": "Dates time-bound (Jun 26–28); hours provisional — may be extended." } },
+        { "name": "Banco Municipal de Sangre (Distrito Capital)", "url": "https://www.instagram.com/bcodesangre_bms/", "handle": "@bcodesangre_bms", "type": "social", "status": "active", "note": { "es": "Banco público de sangre en Caracas; publica jornadas de donación para víctimas del sismo. También en Facebook.", "en": "Caracas public blood bank; posts donation drives for quake victims. Also on Facebook." }, "_review": { "http": "IG 200 / FB 200", "confidence": "HIGH", "why": "Official municipal blood bank in the affected capital.", "caveat": "No standalone website — verified socials only." } },
+        { "name": "Cruz Roja Venezolana", "url": "https://cruzroja.ve/", "type": "website", "status": "active", "note": { "es": "Sociedad nacional de la Cruz Roja con bancos de sangre y centros en varios estados.", "en": "National Red Cross society; runs blood banks/centers across several states." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Established accountable humanitarian body with blood programs. NOTE: site currently only lists the @CruzRojaVe social handle — this adds the website.", "caveat": "Institutional landing; quake-drive specifics live on hospital channels." } }
+      ]
+    },
+    {
+      "id": "diaspora",
+      "emoji": "🌎",
+      "title": { "es": "Diáspora: enviar ayuda y remesas", "en": "Diaspora: send help & remittances" },
+      "blurb": {
+        "es": "Canales formales para que venezolanos en el exterior ayuden a sus familias. Evita billeteras anónimas y pagos en cripto.",
+        "en": "Formal channels for Venezuelans abroad to help their families. Avoid anonymous wallets and crypto payments."
+      },
+      "caveat": {
+        "es": "Para enviar dinero a tu propia familia usa operadores regulados; haz una transferencia de prueba pequeña y confirma la identidad del receptor.",
+        "en": "To send money to your own family use regulated operators; do a small test transfer and confirm the recipient's identity."
+      },
+      "items": [
+        { "name": "Comité de Emergencia (España) — Terremoto Venezuela", "url": "https://www.comiteemergencia.org/emergencias/terremoto-venezuela/", "type": "donation", "status": "active", "note": { "es": "Llamamiento conjunto de 8 ONG con cuentas auditadas (Acción contra el Hambre, Oxfam Intermón, Plan, World Vision, etc.). Donación online, Bizum 02076.", "en": "Joint appeal by 8 BDO-audited NGOs; ideal for the Spain-based diaspora." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Maximum accountability — audited coalition, not a personal wallet.", "caveat": "Spain-focused (Bizum/tax rules apply to Spain)." } },
+        { "name": "ZOOM (agente Western Union en Venezuela) — Remesas", "url": "https://zoom.red/remesas/", "type": "website", "status": "needs-check", "note": { "es": "Canal formal de remesas a familiares; cobro en oficinas ZOOM o cuenta bancaria, con cédula. Agente autorizado de Western Union.", "en": "Legitimate formal remittance channel to relatives; payout at ZOOM offices or bank account." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Long-established regulated operator; the legitimate alternative to anonymous-wallet scams.", "caveat": "A money-transfer provider, NOT charity — frame as 'send money to your own family'." } }
+      ]
+    },
+    {
+      "id": "noticias-verificadas",
+      "emoji": "📰",
+      "title": { "es": "Noticias verificadas y anti-rumores", "en": "Verified news & anti-rumor" },
+      "blurb": {
+        "es": "Medios independientes y verificadores que reportan el sismo y desmontan bulos (falsa alerta de tsunami, apagón nacional, etc.).",
+        "en": "Independent outlets and fact-checkers covering the quake and debunking hoaxes."
+      },
+      "items": [
+        { "name": "Efecto Cocuyo — Cocuyo Chequea", "url": "https://efectococuyo.com/cocuyo-chequea/", "type": "website", "status": "active", "note": { "es": "Sección de verificación; desmiente bulos del sismo y reporta réplicas y cifras verificadas.", "en": "Fact-check desk; debunks quake hoaxes and reports verified figures/aftershocks." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Established independent outlet with editorial accountability." } },
+        { "name": "El Pitazo — Cobertura del terremoto", "url": "https://elpitazo.net/tag/terremoto/", "type": "website", "status": "active", "note": { "es": "Medio independiente con cobertura continua del terremoto.", "en": "Independent outlet with ongoing earthquake coverage." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Major established Venezuelan independent newsroom." } },
+        { "name": "Runrun.es — Cobertura del terremoto", "url": "https://runrun.es/tag/terremoto/", "type": "website", "status": "active", "note": { "es": "Medio de investigación y derechos humanos con cobertura verificada del sismo.", "en": "Investigative/human-rights outlet with verified quake coverage." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Long-standing accountable independent outlet." } },
+        { "name": "Cazadores de Fake News", "url": "https://www.cazadoresdefakenews.info/", "type": "website", "status": "needs-check", "note": { "es": "ONG verificadora; desmonta videos descontextualizados e imágenes con IA atribuidas al terremoto.", "en": "Fact-checking NGO debunking decontextualized/AI quake content." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Dedicated disinformation watchdog.", "caveat": "Historically ISP-blocked inside Venezuela — note diaspora/VPN access." } },
+        { "name": "Observatorio Venezolano de Fake News", "url": "https://x.com/ObservatorioFN", "handle": "@ObservatorioFN", "type": "social", "status": "needs-check", "note": { "es": "Observatorio que verifica bulos del sismo (alerta de tsunami, comunicado falso de Corpoelec).", "en": "Watchdog debunking specific quake hoaxes." }, "_review": { "http": "X 200", "confidence": "MEDIUM", "why": "Active named fact-checker on this event.", "caveat": "Standalone domain did NOT resolve — use the X account only." } }
+      ]
+    }
+  ],
+  "additionsToExistingCategories": {
+    "donaciones": {
+      "_note": "International NGO / UN earthquake appeals to append to the existing 'donaciones' category. All quake-specific unless noted. Already-listed (IFRC, GoFundMe hub, Alimenta, I Love Venezuela) excluded.",
+      "items": [
+        { "name": "UNICEF — Terremotos en Venezuela (niñez)", "url": "https://www.unicef.org/appeals/venezuela", "type": "donation", "status": "active", "note": { "es": "UNICEF protege a la niñez tras los terremotos: agua potable, kits médicos y espacios seguros.", "en": "UNICEF emergency response for children — clean water, medical kits, safe spaces." }, "_review": { "http": "200 (UA)", "confidence": "HIGH", "why": "UN agency on the ground; 3.9M children affected.", "altUrl": "https://www.unicefusa.org/stories/venezuela-earthquakes-children-need-help-now" } },
+        { "name": "Direct Relief — Venezuela Earthquakes 2026", "url": "https://www.directrelief.org/emergency/venezuela-earthquakes-2026/", "type": "donation", "status": "active", "note": { "es": "Envía medicinas de emergencia, kits quirúrgicos y apoyo de búsqueda y rescate.", "en": "Mobilizing emergency medicines, surgical/trauma supplies and SAR support." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Top-rated US medical-aid charity; 100% to Venezuela response.", "caveat": "Offers DAF/IRA/stock/crypto as optional legit methods — choice, not a crypto solicitation." } },
+        { "name": "GlobalGiving — Venezuela Earthquake Relief Fund", "url": "https://www.globalgiving.org/projects/venezuela-earthquake-relief-fund/", "type": "donation", "status": "active", "note": { "es": "Fondo que canaliza donaciones a organizaciones locales venezolanas verificadas.", "en": "Vetted fund channeling flexible grants to local Venezuelan relief orgs." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Established US 501(c)(3) grantmaking platform." } },
+        { "name": "World Central Kitchen — Caracas / Venezuela", "url": "https://wck.org/relief/caracas-venezuela-earthquakes-2026/", "type": "donation", "status": "active", "note": { "es": "Sirve comidas calientes a damnificados y socorristas en Caracas.", "en": "Serving fresh meals to survivors and first responders in Caracas." }, "_review": { "http": "200", "confidence": "HIGH", "why": "José Andrés's WCK, team deployed; well-known operator." } },
+        { "name": "Catholic Relief Services (CRS) — Venezuela earthquake", "url": "https://www.crs.org/donate/venezuela-earthquake", "type": "donation", "status": "active", "note": { "es": "Entrega refugio, agua, alimentos y atención médica a través de Cáritas Venezuela.", "en": "Delivers shelter, water, food and medical care via Caritas Venezuela." }, "_review": { "http": "200 (UA)", "confidence": "HIGH", "why": "Major US Catholic agency working through the local Church." } },
+        { "name": "Cáritas con Venezuela (España)", "url": "https://www.caritas.es/emergencias/caritas-con-venezuela/", "type": "donation", "status": "active", "note": { "es": "Campaña de emergencia de Cáritas con red diocesana en Venezuela.", "en": "Cáritas emergency campaign run through its diocesan network in Venezuela." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Spanish-language donation page; parish-level reach." } },
+        { "name": "Save the Children — Venezuela earthquake", "url": "https://www.savethechildren.org.uk/how-you-can-help/emergencies/venezuela-earthquake", "type": "donation", "status": "active", "note": { "es": "Salud, protección infantil, refugio y alimentos para la niñez afectada.", "en": "Healthcare, child protection, shelter and food for affected children." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Working with local partners in Venezuela since 2018." } },
+        { "name": "World Vision — Venezuela Relief Fund", "url": "https://donate.worldvision.org/give/venezuela-relief-fund-1", "type": "donation", "status": "active", "note": { "es": "Distribuye alimentos, agua, higiene y protección infantil tras los terremotos.", "en": "Distributing food, water, hygiene and child-protection kits." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Emergency team activated; WASH/child-protection focus." } },
+        { "name": "International Rescue Committee (IRC) — Venezuela earthquakes", "url": "https://www.rescue.org/article/how-help-survivors-earthquakes-venezuela", "type": "donation", "status": "active", "note": { "es": "Amplía servicios de salud, nutrición, agua y protección para sobrevivientes.", "en": "Scaling up health, nutrition, WASH and protection for survivors." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Established global responder with teams on the ground." } },
+        { "name": "Project HOPE — Earthquakes in Venezuela: How to Help", "url": "https://www.projecthope.org/news-stories/responses/earthquakes-in-venezuela-how-to-help/", "type": "donation", "status": "active", "note": { "es": "Moviliza atención médica y de trauma con más de 100 trabajadores locales.", "en": "Mobilizing medical and trauma care with 100+ local staff in Venezuela." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Health NGO present in Venezuela since 2019." } }
+      ]
+    },
+    "psicologico": {
+      "_note": "Self-help psychological first-aid guides to append to the existing 'psicologico' (mental health) category.",
+      "items": [
+        { "name": "OMS — Primera ayuda psicológica: guía para trabajadores de campo (PDF)", "url": "https://iris.who.int/bitstream/handle/10665/44837/9789243548203_spa.pdf", "type": "file", "status": "active", "note": { "es": "Guía oficial de la OMS de Primeros Auxilios Psicológicos (mirar, escuchar, conectar), en español.", "en": "WHO Psychological First Aid field guide (look, listen, link), in Spanish." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Gold-standard PFA usable by volunteers and laypeople." } },
+        { "name": "Guía del IASC — Salud Mental y Apoyo Psicosocial en Emergencias (OPS)", "url": "https://www.paho.org/es/documentos/guia-iasc-sobre-salud-mental-apoyo-psicosocial-emergencias-humanitarias-catastrofes", "type": "website", "status": "active", "note": { "es": "Guía del IASC (MHPSS) alojada por la OPS; autoayuda y apoyo comunitario en catástrofes.", "en": "IASC MHPSS guidelines via PAHO." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Chose PAHO landing over direct IASC PDF (which 202s a Cloudflare challenge)." } }
+      ]
+    },
+    "oficial": {
+      "_note": "Coordination/info links (not donation CTAs) optionally for the 'oficial' or 'seguridad' category.",
+      "items": [
+        { "name": "UN OCHA — Venezuela", "url": "https://www.unocha.org/venezuela", "type": "website", "status": "active", "note": { "es": "La OCHA de la ONU coordina la respuesta humanitaria internacional y los equipos de búsqueda y rescate.", "en": "UN OCHA coordinating the international humanitarian response and USAR teams." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Coordination/info link, not a donation CTA." } },
+        { "name": "MSF / Médicos Sin Fronteras — Terremotos en Venezuela", "url": "https://www.msf.org/venezuela", "type": "website", "status": "active", "note": { "es": "MSF dona kits de trauma a hospitales de Caracas y La Guaira y ofrece apoyo en salud mental.", "en": "MSF donating trauma kits to Caracas/La Guaira hospitals and offering mental-health support." }, "_review": { "http": "200", "confidence": "HIGH", "why": "Info link — MSF takes unearmarked donations, no quake-specific donate button.", "altUrl": "https://www.doctorswithoutborders.ca/venezuela-earthquakes/" } }
+      ]
+    }
+  },
+  "registryNote": {
+    "facebookSafetyCheck": {
+      "name": "Facebook — Comprobación del estado de seguridad (Safety Check)",
+      "url": "https://www.facebook.com/crisisresponse/",
+      "_review": { "http": "200 (redirects to login)", "confidence": "HIGH that activated for this event / MEDIUM as a clean link", "why": "Meta activated Safety Check for the M7.2/M7.5 event; complements existing citizen registries. Lives in-app behind login — present as a feature, not a clean link. Could go in the existing 'personas' category." }
+    }
+  }
+}
