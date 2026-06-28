@@ -1,6 +1,6 @@
 # Ayuda Venezuela — Deployment & the one remaining step
 
-**Status (2026-06-27):** the site is **built, deployed, and healthy**, and serves **HTTP 200 at the origin**. The public URL `https://ayudavenezuela.lat` returns **404** for exactly one reason: the Cloudflare **Tunnel** that fronts the server has no *public-hostname* entry for this domain yet. Adding it is the only remaining task and needs **Cloudflare account-level access** (the automation only had zone/DNS scope).
+**Status (2026-06-27):** the site is **built, deployed, healthy, and public**. `https://ayudavenezuela.lat` and `https://www.ayudavenezuela.lat` both return **HTTP 200** through Cloudflare.
 
 ## Architecture
 
@@ -20,29 +20,20 @@ visitor ──HTTPS──> Cloudflare edge ──Tunnel(50bc217a…)──> Cadd
 - **DNS (Cloudflare):** `ayudavenezuela.lat` and `www` → proxied CNAME to `50bc217a-876d-4df2-8940-0ae75e55a294.cfargotunnel.com`. Email MX/SPF left intact.
 - **Verified at origin:** `curl -H 'Host: ayudavenezuela.lat' http://100.105.148.58/` → `200` with the full site.
 
-## The remaining step — add the tunnel public hostnames
+## Cloudflare tunnel public hostnames
 
-Add **two** public hostnames to tunnel `50bc217a…`, pointing at the **same service the existing entries use** (e.g. copy `open-ocr.com`'s — it is `HTTP` → `localhost:80`):
+These **two** public hostnames are configured on tunnel `50bc217a…`, pointing at the same HTTP service as the other apps:
 
 | Hostname | Service |
 |---|---|
 | `ayudavenezuela.lat` | `http://localhost:80` |
 | `www.ayudavenezuela.lat` | `http://localhost:80` |
 
-### Option A — Cloudflare Zero Trust dashboard (manual)
-Zero Trust → **Networks → Tunnels** → open the tunnel that serves `open-ocr.com` → **Public Hostnames** → **Add a public hostname** (twice, per the table above). The DNS CNAMEs already exist, so no DNS change is needed.
+If either hostname ever starts returning a tunnel 404 again, check Zero Trust → **Networks → Tunnels** → tunnel `50bc217a…` → **Public Hostnames** and restore the entries above. The DNS CNAMEs should remain proxied to `50bc217a-876d-4df2-8940-0ae75e55a294.cfargotunnel.com`.
 
-### Option B — Cloudflare API (needs a token with `Account · Cloudflare Tunnel · Edit`)
-```bash
-ACCOUNT_ID=<your account id>          # GET /client/v4/accounts
-TUNNEL_ID=50bc217a-876d-4df2-8940-0ae75e55a294
-# 1) read the current config, 2) append the two ingress rules BEFORE the final
-#    catch-all (service: http_status:404), 3) PUT it back:
-#    GET  /client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/configurations
-#    PUT  /client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/configurations
-# Each new rule: { "hostname": "ayudavenezuela.lat", "service": "http://localhost:80" }
-```
-> The repo automation can do Option B end-to-end once the token has the `Cloudflare Tunnel · Edit` permission — editing the existing token's permissions does **not** change its value.
+## Caching and capacity
+
+The Astro site is static. nginx caches immutable `/_astro/` assets for one year, images for seven days, and HTML with `Cache-Control: public, max-age=60, s-maxage=300` so Cloudflare can absorb bursts while still picking up emergency edits quickly.
 
 ## Verify
 

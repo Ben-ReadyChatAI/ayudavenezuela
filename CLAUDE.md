@@ -1,6 +1,6 @@
 # Ayuda Venezuela — project rules
 
-## ⛔ Classifieds are OFF. Do NOT enable them without an explicit instruction.
+## Classifieds stay OFF. Link suggestions are the active community workflow.
 The "Clasificados" / Ofrezco–Necesito board is **disabled on purpose**. There are already
 too many classifieds sites; this project deliberately does not add another.
 
@@ -13,7 +13,9 @@ too many classifieds sites; this project deliberately does not add another.
   (delete the `PUBLIC_CLASSIFIEDS_ENABLED` env so it falls back to the Dockerfile default `false`).
 - The email-relay pieces stay dormant too.
 
-The code can stay in the repo (gated behind the flag); just never ship it enabled.
+The code can stay in the repo (gated behind the flag); just never ship it enabled. Community
+submissions should go through `/sugerir/`, then a small admin group reviews them at
+`/admin/sugerencias/`.
 
 ## Design
 Warm "golden hour over El Ávila" identity — Hanken Grotesk; sand/gold/green/red/sky palette

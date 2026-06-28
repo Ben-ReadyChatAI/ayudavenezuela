@@ -1,0 +1,145 @@
+---
+import Base from '../layouts/Base.astro';
+
+const enabled = import.meta.env.PUBLIC_SUGGESTIONS_ENABLED !== 'false';
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const SUPABASE_ANON = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || '';
+const configured = enabled && SUPABASE_URL && SUPABASE_ANON;
+
+const categorias = [
+  'Información oficial y emergencias',
+  'Buscar personas',
+  'Mascotas',
+  'Pacientes y hospitales',
+  'Información de seguridad',
+  'Donaciones',
+  'Apoyo psicológico',
+  'Insumos requeridos',
+  'Otra'
+];
+const tipos = [
+  ['website', 'Sitio web'],
+  ['whatsapp_channel', 'Canal de WhatsApp'],
+  ['whatsapp_group', 'Grupo de WhatsApp'],
+  ['social', 'Red social'],
+  ['document', 'Documento'],
+  ['other', 'Otro']
+];
+---
+<Base title="Sugerir un enlace — Ayuda Venezuela" description="Sugiere enlaces, canales de WhatsApp y recursos útiles para revisar y agregar a Ayuda Venezuela.">
+  <section class="section suggest">
+    <div class="wrap">
+      <h1>Sugerir un enlace</h1>
+
+      {!enabled && <p class="lead">Esta sección estará disponible pronto.</p>}
+      {enabled && !configured && <p class="lead">El formulario de sugerencias está en configuración. Vuelve más tarde.</p>}
+
+      {configured && (
+        <>
+          <p class="lead">Envía recursos útiles para que el equipo los revise antes de agregarlos al directorio. Aceptamos sitios web, redes sociales, documentos y canales de WhatsApp.</p>
+          <p class="caveat">Verifica el enlace antes de enviarlo. No publiques datos personales, cuentas bancarias privadas ni cadenas sin fuente clara.</p>
+
+          <form id="suggest-form" class="suggest-form" novalidate>
+            <div class="cl-row">
+              <label>Tipo de enlace *
+                <select name="link_type" required>
+                  {tipos.map(([value, label]) => <option value={value}>{label}</option>)}
+                </select>
+              </label>
+              <label>Categoría *
+                <select name="category" required>
+                  {categorias.map((c) => <option value={c}>{c}</option>)}
+                </select>
+              </label>
+            </div>
+
+            <label>Nombre del recurso *
+              <input name="title" maxlength="140" required placeholder="Ej.: Canal de acopio La Guaira" />
+            </label>
+
+            <label>Enlace *
+              <input name="url" maxlength="500" required inputmode="url" placeholder="https://..." />
+            </label>
+
+            <label>Descripción
+              <textarea name="description" maxlength="1200" rows="3" placeholder="Qué ofrece, a quién ayuda y dónde aplica"></textarea>
+            </label>
+
+            <label>Cómo lo verificaste
+              <textarea name="verification" maxlength="1200" rows="3" placeholder="Ej.: publicado por una organización conocida, confirmado por llamada, canal oficial, etc."></textarea>
+            </label>
+
+            <div class="cl-row">
+              <label>Tu nombre
+                <input name="submitter_name" maxlength="120" autocomplete="name" />
+              </label>
+              <label>Tu email
+                <input name="submitter_email" type="email" maxlength="200" autocomplete="email" placeholder="opcional" />
+              </label>
+            </div>
+
+            <button type="submit" class="cl-submit">Enviar para revisión</button>
+            <p id="suggest-msg" class="cl-msg" role="status"></p>
+          </form>
+        </>
+      )}
+    </div>
+  </section>
+
+  {configured && (
+    <script define:vars={{ SUPABASE_URL, SUPABASE_ANON }}>
+      const REST = SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/link_suggestions';
+      const headers = { apikey: SUPABASE_ANON, Authorization: 'Bearer ' + SUPABASE_ANON };
+      const form = document.getElementById('suggest-form');
+      const msg = document.getElementById('suggest-msg');
+
+      function clean(value) {
+        const text = (value || '').toString().trim();
+        return text || null;
+      }
+
+      function isUrl(value) {
+        try {
+          const parsed = new URL(value);
+          return parsed.protocol === 'https:' || parsed.protocol === 'http:';
+        } catch {
+          return false;
+        }
+      }
+
+      form.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        const fd = new FormData(form);
+        const payload = {
+          link_type: fd.get('link_type'),
+          category: fd.get('category'),
+          title: clean(fd.get('title')),
+          url: clean(fd.get('url')),
+          description: clean(fd.get('description')),
+          verification: clean(fd.get('verification')),
+          submitter_name: clean(fd.get('submitter_name')),
+          submitter_email: clean(fd.get('submitter_email')),
+          status: 'pending',
+        };
+
+        if (!payload.title || payload.title.length < 3) { msg.textContent = 'Escribe el nombre del recurso.'; return; }
+        if (!payload.url || !isUrl(payload.url)) { msg.textContent = 'Escribe un enlace válido que empiece con http:// o https://.'; return; }
+        if (payload.submitter_email && !/.+@.+\..+/.test(payload.submitter_email)) { msg.textContent = 'Revisa el email o déjalo vacío.'; return; }
+
+        msg.textContent = 'Enviando...';
+        try {
+          const r = await fetch(REST, {
+            method: 'POST',
+            headers: { ...headers, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+            body: JSON.stringify(payload),
+          });
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          form.reset();
+          msg.textContent = 'Gracias. El enlace quedó en revisión.';
+        } catch (e) {
+          msg.textContent = 'No se pudo enviar. Intenta más tarde.';
+        }
+      });
+    </script>
+  )}
+</Base>

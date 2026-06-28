@@ -7,6 +7,7 @@ import SuppliesBoard from './SuppliesBoard.astro';
 import { tt } from '../i18n.js';
 const lang = 'es';
 const classifiedsEnabled = import.meta.env.PUBLIC_CLASSIFIEDS_ENABLED === 'true';
+const suggestionsEnabled = import.meta.env.PUBLIC_SUGGESTIONS_ENABLED !== 'false';
 
 // Quick-nav is generated from the resource categories so it never drifts out of
 // sync. Short labels keep the chips compact; accent classes highlight key ones.
@@ -31,14 +32,15 @@ const quickAccent = { personas: 'qa-find', donaciones: 'qa-give', psicologico: '
         {cat.emoji} {quickLabels[cat.id] ?? tt(cat.title, lang)}
       </a>
     ))}
+    {suggestionsEnabled && <a class="qa qa-board" href="/sugerir/">🔗 Sugerir enlace</a>}
     {classifiedsEnabled && <a class="qa qa-board" href="/clasificados/">📣 Clasificados</a>}
   </div>
 </nav>
 <EventBanner />
 
-{classifiedsEnabled && (
+{suggestionsEnabled && (
   <div class="wrap cl-teaser">
-    <a class="cl-cta" href="/clasificados/">📣 Clasificados — pedidos y ofertas de la comunidad →</a>
+    <a class="cl-cta" href="/sugerir/">Sugerir enlaces, canales de WhatsApp o correcciones</a>
   </div>
 )}
 

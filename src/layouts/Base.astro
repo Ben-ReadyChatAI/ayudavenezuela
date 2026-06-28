@@ -60,7 +60,7 @@ const canonical = site.site ?? `https://${site.domain}/`;
         <p class="disclaimer">{tt(site.disclaimer, lang)}</p>
         {site.footer.submitUrl && (
           <p class="submit">
-            <a href={site.footer.submitUrl} target="_blank" rel="noopener noreferrer">✏️ {tt(site.footer.submit, lang)}</a>
+            <a href={site.footer.submitUrl} rel="noopener noreferrer">✏️ {tt(site.footer.submit, lang)}</a>
           </p>
         )}
         {site.footer.contactEmail && (

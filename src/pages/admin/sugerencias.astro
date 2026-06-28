@@ -1,0 +1,209 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const enabled = import.meta.env.PUBLIC_SUGGESTIONS_ENABLED !== 'false';
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const SUPABASE_ANON = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || '';
+const configured = enabled && SUPABASE_URL && SUPABASE_ANON;
+---
+<Base title="Admin sugerencias — Ayuda Venezuela" description="Panel privado para revisar enlaces sugeridos.">
+  <section class="section admin-suggestions">
+    <div class="wrap">
+      <h1>Revisión de sugerencias</h1>
+      {!enabled && <p class="lead">Esta sección está desactivada.</p>}
+      {enabled && !configured && <p class="lead">El panel está en configuración.</p>}
+
+      {configured && (
+        <>
+          <form id="admin-login" class="suggest-form admin-login" novalidate>
+            <div class="cl-row">
+              <label>Email
+                <input name="email" type="email" autocomplete="email" required />
+              </label>
+              <label>Contraseña
+                <input name="password" type="password" autocomplete="current-password" required />
+              </label>
+            </div>
+            <button type="submit" class="cl-submit">Entrar</button>
+            <p id="admin-login-msg" class="cl-msg" role="status"></p>
+          </form>
+
+          <div id="admin-app" hidden>
+            <div class="admin-bar">
+              <label>Estado
+                <select id="status-filter">
+                  <option value="pending">Pendientes</option>
+                  <option value="approved">Aprobadas</option>
+                  <option value="rejected">Rechazadas</option>
+                  <option value="archived">Archivadas</option>
+                </select>
+              </label>
+              <button id="refresh-suggestions" type="button" class="cl-contactbtn">Actualizar</button>
+              <button id="admin-logout" type="button" class="admin-linkbtn">Salir</button>
+            </div>
+            <p id="admin-msg" class="cl-msg" role="status"></p>
+            <div id="suggestions-list" class="admin-list" aria-live="polite"></div>
+          </div>
+        </>
+      )}
+    </div>
+  </section>
+
+  {configured && (
+    <script define:vars={{ SUPABASE_URL, SUPABASE_ANON }}>
+      const BASE = SUPABASE_URL.replace(/\/$/, '');
+      const REST = BASE + '/rest/v1/link_suggestions';
+      const TOKEN_KEY = 'ayuda_admin_token';
+      const USER_KEY = 'ayuda_admin_user';
+      const publicHeaders = { apikey: SUPABASE_ANON };
+      const loginForm = document.getElementById('admin-login');
+      const loginMsg = document.getElementById('admin-login-msg');
+      const app = document.getElementById('admin-app');
+      const list = document.getElementById('suggestions-list');
+      const msg = document.getElementById('admin-msg');
+      const filter = document.getElementById('status-filter');
+      const refreshBtn = document.getElementById('refresh-suggestions');
+      const logoutBtn = document.getElementById('admin-logout');
+
+      function token() { return sessionStorage.getItem(TOKEN_KEY); }
+      function userId() { return sessionStorage.getItem(USER_KEY); }
+      function authHeaders() {
+        const t = token();
+        return { ...publicHeaders, Authorization: 'Bearer ' + t };
+      }
+      function fmtDate(value) {
+        try { return new Date(value).toLocaleString('es-VE', { dateStyle: 'medium', timeStyle: 'short' }); }
+        catch { return ''; }
+      }
+      function showApp(signedIn) {
+        loginForm.hidden = signedIn;
+        app.hidden = !signedIn;
+      }
+
+      async function load() {
+        msg.textContent = 'Cargando...';
+        list.innerHTML = '';
+        try {
+          const params = '?select=id,created_at,title,url,category,link_type,description,verification,submitter_name,submitter_email,status,admin_notes' +
+            '&status=eq.' + encodeURIComponent(filter.value) + '&order=created_at.desc&limit=100';
+          const r = await fetch(REST + params, { headers: authHeaders() });
+          if (r.status === 401 || r.status === 403) throw new Error('auth');
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          const rows = await r.json();
+          msg.textContent = rows.length ? `${rows.length} sugerencia(s).` : 'No hay sugerencias en este estado.';
+          rows.forEach((row) => list.append(card(row)));
+        } catch (e) {
+          msg.textContent = e.message === 'auth' ? 'No tienes acceso de admin o la sesión venció.' : 'No se pudieron cargar las sugerencias.';
+        }
+      }
+
+      function meta(label, value) {
+        if (!value) return null;
+        const p = document.createElement('p');
+        p.className = 'admin-meta';
+        p.textContent = label + ': ' + value;
+        return p;
+      }
+
+      function card(row) {
+        const el = document.createElement('article');
+        el.className = 'card admin-card';
+
+        const top = document.createElement('div');
+        top.className = 'cl-top';
+        const tag = document.createElement('span');
+        tag.className = 'cl-tag ofrezco';
+        tag.textContent = row.link_type.replaceAll('_', ' ');
+        const cat = document.createElement('span');
+        cat.className = 'cl-cat';
+        cat.textContent = row.category || '';
+        top.append(tag, cat);
+
+        const h = document.createElement('div');
+        h.className = 'name';
+        h.textContent = row.title || '';
+        const link = document.createElement('a');
+        link.className = 'admin-url';
+        link.href = row.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = row.url;
+
+        el.append(top, h, link);
+        if (row.description) { const d = document.createElement('p'); d.className = 'cnote'; d.textContent = row.description; el.append(d); }
+        if (row.verification) { const v = document.createElement('p'); v.className = 'cnote caution'; v.textContent = 'Verificación: ' + row.verification; el.append(v); }
+        [meta('Enviado', fmtDate(row.created_at)), meta('Nombre', row.submitter_name), meta('Email', row.submitter_email)].filter(Boolean).forEach((item) => el.append(item));
+
+        const notes = document.createElement('textarea');
+        notes.className = 'admin-notes';
+        notes.rows = 2;
+        notes.maxLength = 1200;
+        notes.placeholder = 'Notas internas';
+        notes.value = row.admin_notes || '';
+
+        const actions = document.createElement('div');
+        actions.className = 'admin-actions';
+        [['approved', 'Aprobar'], ['rejected', 'Rechazar'], ['archived', 'Archivar'], ['pending', 'Pendiente']].forEach(([status, label]) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = status === 'approved' ? 'cl-submit' : 'cl-contactbtn';
+          btn.textContent = label;
+          btn.addEventListener('click', () => update(row.id, status, notes.value));
+          actions.append(btn);
+        });
+
+        el.append(notes, actions);
+        return el;
+      }
+
+      async function update(id, status, admin_notes) {
+        msg.textContent = 'Guardando...';
+        try {
+          const payload = { status, admin_notes: admin_notes || null, reviewed_by: userId(), reviewed_at: new Date().toISOString() };
+          const r = await fetch(REST + '?id=eq.' + encodeURIComponent(id), {
+            method: 'PATCH',
+            headers: { ...authHeaders(), 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+            body: JSON.stringify(payload),
+          });
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          await load();
+        } catch (e) {
+          msg.textContent = 'No se pudo guardar el cambio.';
+        }
+      }
+
+      loginForm.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        const fd = new FormData(loginForm);
+        loginMsg.textContent = 'Entrando...';
+        try {
+          const r = await fetch(BASE + '/auth/v1/token?grant_type=password', {
+            method: 'POST',
+            headers: { ...publicHeaders, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: fd.get('email'), password: fd.get('password') }),
+          });
+          if (!r.ok) throw new Error('login');
+          const data = await r.json();
+          sessionStorage.setItem(TOKEN_KEY, data.access_token);
+          sessionStorage.setItem(USER_KEY, data.user?.id || '');
+          loginForm.reset();
+          loginMsg.textContent = '';
+          showApp(true);
+          await load();
+        } catch (e) {
+          loginMsg.textContent = 'No se pudo entrar. Revisa el usuario, la contraseña y el permiso de admin.';
+        }
+      });
+
+      refreshBtn.addEventListener('click', load);
+      filter.addEventListener('change', load);
+      logoutBtn.addEventListener('click', () => {
+        sessionStorage.removeItem(TOKEN_KEY);
+        sessionStorage.removeItem(USER_KEY);
+        showApp(false);
+      });
+
+      if (token()) { showApp(true); load(); }
+    </script>
+  )}
+</Base>
