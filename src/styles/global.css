@@ -3,28 +3,29 @@
    Friendly, bright, Venezuelan. Type: Hanken Grotesk.
    ============================================================ */
 :root {
-  --arena: #fdf4e6;       /* warm sand background */
-  --arena-2: #f8ecd6;
+  /* Venezuelan flag palette — amarillo / azul / rojo */
+  --arena: #f7f8fb;       /* light neutral background */
+  --arena-2: #eef1f7;
   --card: #ffffff;
-  --tinta: #2c2114;       /* warm near-black */
-  --muted: #7c6f5e;
-  --linea: #efe1ca;       /* warm hairline */
+  --tinta: #16213e;       /* deep blue ink */
+  --muted: #5b647a;
+  --linea: #e3e7f0;       /* hairline */
 
-  --sol: #f0a013;         /* sun gold */
-  --sol-700: #c47e07;
-  --sol-100: #fce7bd;
-  --verde: #12895a;       /* hope green — primary actions */
-  --verde-700: #0e6e49;
-  --verde-50: #e2f1e8;
-  --rojo: #d6452f;        /* warm Venezuelan red */
-  --rojo-700: #b1361f;
-  --rojo-50: #fbe7e1;
-  --cielo: #2f80b4;       /* soft sky blue — secondary */
-  --avila: #2f5249;       /* mountain */
-  --avila-back: #6e9388;
+  --sol: #f5c211;         /* amarillo bandera — accent + stars */
+  --sol-700: #b3890a;
+  --sol-100: #fdeeb6;
+  --verde: #0a37a0;       /* azul bandera — primary (links/actions). name kept for legacy rules */
+  --verde-700: #082c80;
+  --verde-50: #e7edfa;
+  --rojo: #d11d3a;        /* rojo bandera */
+  --rojo-700: #ab1530;
+  --rojo-50: #fbe6e9;
+  --cielo: #2a5bbf;       /* secondary blue */
+  --avila: #082c80;       /* mountains / footer = deep blue */
+  --avila-back: #4f72c8;
 
-  --ok-bg: #e2f1e8; --ok-fg: #0e6e49;
-  --warn-bg: #fbe9cd; --warn-fg: #8a5a08;
+  --ok-bg: #e7edfa; --ok-fg: #0a37a0;   /* "Verificado" badge = blue */
+  --warn-bg: #fdeeb6; --warn-fg: #8a6308;
 
   --font: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --maxw: 1080px;
@@ -49,7 +50,7 @@ img, svg { display: block; max-width: 100%; }
 :focus-visible { outline: 3px solid var(--sol); outline-offset: 2px; border-radius: 4px; }
 
 /* ---------- header / hero: golden hour over El Ávila ---------- */
-.site-header { position: relative; overflow: hidden; background: linear-gradient(176deg, #d4edf2 0%, #ffe9c6 62%, #f9d4a0 100%); }
+.site-header { position: relative; overflow: hidden; background: linear-gradient(176deg, #fdf0c4 0%, #fdf8ea 46%, #e6edfb 100%); }
 .site-header .sun { position: absolute; top: -52px; left: 50%; width: 150px; height: 150px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(255,221,140,.9) 0%, rgba(255,210,120,.45) 40%, transparent 70%); pointer-events: none; }
 .site-header .avila { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(16px, 2.2vw, 24px); pointer-events: none; z-index: 0; }
 .header-row { position: relative; z-index: 1; display: flex; align-items: baseline; justify-content: space-between; gap: 4px 24px; flex-wrap: wrap; padding-block: 13px 30px; }
@@ -125,7 +126,7 @@ a.card:hover::before { transform: scaleX(1); }
 
 /* ---------- footer ---------- */
 .site-footer { position: relative; background: var(--avila); color: #dce9e2; margin-top: 0; overflow: hidden; }
-.site-footer::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: linear-gradient(90deg, var(--sol) 0%, var(--rojo) 100%); }
+.site-footer::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 5px; background: linear-gradient(90deg, var(--sol) 0 33.34%, var(--verde) 33.34% 66.67%, var(--rojo) 66.67% 100%); }
 .site-footer .wrap { padding-block: 34px; }
 .site-footer .disclaimer { font-size: 0.86rem; max-width: 80ch; line-height: 1.65; }
 .site-footer a { color: #fff; }
