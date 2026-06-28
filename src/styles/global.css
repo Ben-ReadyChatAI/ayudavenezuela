@@ -49,18 +49,18 @@ img, svg { display: block; max-width: 100%; }
 :focus-visible { outline: 3px solid var(--sol); outline-offset: 2px; border-radius: 4px; }
 
 /* ---------- header / hero: golden hour over El Ávila ---------- */
-.site-header { position: relative; overflow: hidden; background: linear-gradient(176deg, #cdeaf0 0%, #ffe9c6 46%, #fcd99c 72%, #f7caa0 100%); }
-.site-header .sun { position: absolute; top: 8%; left: 50%; width: 230px; height: 230px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(255,221,140,.95) 0%, rgba(255,210,120,.5) 38%, transparent 70%); pointer-events: none; }
-.site-header .avila { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: auto; pointer-events: none; }
-.site-header .wrap { position: relative; padding: 46px 20px 92px; text-align: center; z-index: 1; }
-.brand { font-weight: 800; color: var(--tinta); font-size: clamp(2.2rem, 6.6vw, 3.3rem); line-height: 1; margin: 0; letter-spacing: -0.03em; }
+.site-header { position: relative; overflow: hidden; background: linear-gradient(176deg, #cdeaf0 0%, #ffe9c6 48%, #fcd99c 74%, #f7caa0 100%); }
+.site-header .sun { position: absolute; top: 2%; left: 50%; width: 168px; height: 168px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(255,221,140,.95) 0%, rgba(255,210,120,.5) 38%, transparent 70%); pointer-events: none; }
+.site-header .avila { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(48px, 6.5vw, 82px); pointer-events: none; }
+.site-header .wrap { position: relative; padding: 22px 20px 46px; text-align: center; z-index: 1; }
+.brand { font-weight: 800; color: var(--tinta); font-size: clamp(1.8rem, 5vw, 2.45rem); line-height: 1; margin: 0; letter-spacing: -0.03em; }
 .brand .ve { color: var(--rojo); }
-.stars { width: min(196px, 62%); height: auto; margin: 13px auto 0; display: block; }
-.tagline { margin: 15px auto 0; color: #5a4a32; font-size: 1.06rem; max-width: 50ch; font-weight: 500; }
+.stars { width: min(150px, 50%); height: auto; margin: 9px auto 0; display: block; }
+.tagline { margin: 9px auto 0; color: #5a4a32; font-size: 0.98rem; max-width: 50ch; font-weight: 500; }
 
 /* quick actions */
 .quick { background: var(--card); border-bottom: 1px solid var(--linea); }
-.quick .wrap { display: flex; flex-wrap: wrap; gap: 10px; padding-block: 16px; justify-content: center; }
+.quick .wrap { display: flex; flex-wrap: wrap; gap: 10px; padding-block: 12px; justify-content: center; }
 .qa { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; font-weight: 700; font-size: .95rem; text-decoration: none; border: 1.5px solid transparent; }
 .qa-find { background: var(--verde-50); color: var(--verde-700); border-color: #bfe0cd; }
 .qa-give { background: var(--rojo-50); color: var(--rojo-700); border-color: #f3c9bd; }
@@ -70,7 +70,7 @@ img, svg { display: block; max-width: 100%; }
 
 /* ---------- event banner ---------- */
 .event { background: var(--card); border-bottom: 1px solid var(--linea); }
-.event .wrap { padding-block: 30px; }
+.event .wrap { padding-block: 22px; }
 .event h1 { font-size: clamp(1.55rem, 4.4vw, 2.2rem); margin-bottom: 10px; }
 .event > .wrap > p { margin: 0; color: #4a4032; max-width: 72ch; font-size: 1.04rem; }
 .stats { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 22px; }
@@ -84,12 +84,12 @@ img, svg { display: block; max-width: 100%; }
 .pill.warn { background: var(--warn-bg); border-color: #f0d79c; color: var(--warn-fg); }
 
 /* ---------- sections ---------- */
-.section { padding-block: 38px; }
+.section { padding-block: 28px; }
 .section > .wrap > h2, .supplies > .wrap > h2 { font-size: 1.55rem; margin: 0 0 5px; display: flex; align-items: center; gap: 11px; }
 .section > .wrap > h2::before, .supplies > .wrap > h2::before { content: ""; width: 16px; height: 16px; flex: none; background: var(--sol); -webkit-mask: var(--star) center/contain no-repeat; mask: var(--star) center/contain no-repeat; }
 .section .lead, .supplies .lead { color: var(--muted); margin: 0 0 24px; max-width: 70ch; }
 
-.cat { margin-top: 30px; }
+.cat { margin-top: 22px; }
 .cat h3 { font-size: 1.18rem; margin: 0 0 4px; display: flex; align-items: center; gap: 11px; }
 .cat .cat-ico { width: 42px; height: 42px; flex: none; display: inline-flex; align-items: center; justify-content: center; font-size: 1.25rem; border-radius: 13px; background: var(--sol-100); box-shadow: inset 0 0 0 1px rgba(240,160,19,.25); }
 .cat .blurb { color: var(--muted); margin: 2px 0 16px; font-size: 0.96rem; max-width: 70ch; }
