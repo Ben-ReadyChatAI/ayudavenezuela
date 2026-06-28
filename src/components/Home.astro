@@ -8,6 +8,14 @@ import { tt } from '../i18n.js';
 const lang = 'es';
 const classifiedsEnabled = import.meta.env.PUBLIC_CLASSIFIEDS_ENABLED === 'true';
 ---
+<nav class="quick" aria-label="Acciones rápidas">
+  <div class="wrap">
+    <a class="qa qa-find" href="#personas">🔎 Buscar personas</a>
+    <a class="qa qa-give" href="#donaciones">❤️ Donar</a>
+    {classifiedsEnabled && <a class="qa qa-board" href="/clasificados/">📣 Clasificados</a>}
+    <a class="qa qa-mind" href="#psicologico">🧠 Apoyo</a>
+  </div>
+</nav>
 <EventBanner />
 
 {classifiedsEnabled && (
