@@ -38,7 +38,10 @@ const canonical = site.site ?? `https://${site.domain}/`;
     <header class="site-header">
       <span class="sun" aria-hidden="true"></span>
       <div class="wrap header-row">
-        <p class="brand">Ayuda <span class="ve">Venezuela</span></p>
+        <a class="brand-lockup" href="/">
+          <img class="logo" src="/logo.png" width="44" height="44" alt="" />
+          <span class="brand">Ayuda <span class="ve">Venezuela</span></span>
+        </a>
         <p class="tagline">{tt(site.tagline, lang)}</p>
       </div>
       <svg class="avila" viewBox="0 0 1440 140" preserveAspectRatio="xMidYMax slice" role="img" aria-label="El Ávila sobre Caracas">
