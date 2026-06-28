@@ -7,13 +7,31 @@ import SuppliesBoard from './SuppliesBoard.astro';
 import { tt } from '../i18n.js';
 const lang = 'es';
 const classifiedsEnabled = import.meta.env.PUBLIC_CLASSIFIEDS_ENABLED === 'true';
+
+// Quick-nav is generated from the resource categories so it never drifts out of
+// sync. Short labels keep the chips compact; accent classes highlight key ones.
+// 'oficial' is intentionally excluded: official/government channels are widely
+// distrusted in Venezuela, and leading with them would make the site read as
+// pro-government ("chavista"). The section stays in the body, just not up front.
+const quickHidden = new Set(['oficial']);
+const quickLabels = {
+  personas: 'Buscar personas',
+  mascotas: 'Mascotas',
+  hospitales: 'Hospitales',
+  seguridad: 'Seguridad',
+  donaciones: 'Donar',
+  psicologico: 'Apoyo',
+};
+const quickAccent = { personas: 'qa-find', donaciones: 'qa-give', psicologico: 'qa-mind' };
 ---
 <nav class="quick" aria-label="Acciones rápidas">
   <div class="wrap">
-    <a class="qa qa-find" href="#personas">🔎 Buscar personas</a>
-    <a class="qa qa-give" href="#donaciones">❤️ Donar</a>
+    {resources.categories.filter((cat) => !quickHidden.has(cat.id)).map((cat) => (
+      <a class:list={['qa', quickAccent[cat.id]]} href={`#${cat.id}`}>
+        {cat.emoji} {quickLabels[cat.id] ?? tt(cat.title, lang)}
+      </a>
+    ))}
     {classifiedsEnabled && <a class="qa qa-board" href="/clasificados/">📣 Clasificados</a>}
-    <a class="qa qa-mind" href="#psicologico">🧠 Apoyo</a>
   </div>
 </nav>
 <EventBanner />
