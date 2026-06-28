@@ -5,25 +5,25 @@ const lang = 'es';
 const ev = site.event;
 ---
 <section class="event">
-  <div class="wrap">
-    <h1>{tt(ev.headline, lang)}</h1>
-    <p>{tt(ev.summary, lang)}</p>
-
+  <div class="wrap event-grid">
+    <div class="event-main">
+      <h1>{tt(ev.headline, lang)}</h1>
+      <p>{tt(ev.summary, lang)}</p>
+      <div class="meta">
+        <span class="pill">📅 Actualizado: {site.updated}</span>
+        {!ev.verified && <span class="pill warn">ℹ {tt(site.ui.verifyNote, lang)}</span>}
+      </div>
+      {ev.statsNote && <p class="statsnote">{tt(ev.statsNote, lang)}</p>}
+    </div>
     {ev.stats && (
-      <div class="stats">
+      <aside class="stats">
         {ev.stats.map((s) => (
           <div class="stat">
             <span class="stat-val">{s.value}</span>
             <span class="stat-lbl">{tt(s.label, lang)}</span>
           </div>
         ))}
-      </div>
+      </aside>
     )}
-
-    <div class="meta">
-      <span class="pill">📅 Actualizado: {site.updated}</span>
-      {!ev.verified && <span class="pill warn">ℹ {tt(site.ui.verifyNote, lang)}</span>}
-    </div>
-    {ev.statsNote && <p class="statsnote">{tt(ev.statsNote, lang)}</p>}
   </div>
 </section>
