@@ -62,8 +62,8 @@ img, svg { display: block; max-width: 100%; }
 
 /* sticky quick-nav */
 .quick { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,.95); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--linea); box-shadow: 0 4px 14px -10px rgba(44,33,20,.4); }
-.quick .wrap { display: flex; flex-wrap: wrap; gap: 10px; padding-block: 12px; justify-content: center; }
-.qa { display: inline-flex; align-items: center; gap: 7px; padding: 9px 15px; border-radius: 999px; font-weight: 700; font-size: .92rem; text-decoration: none; background: var(--card); color: var(--tinta); border: 1.5px solid var(--linea); transition: transform .12s ease, border-color .12s ease; }
+.quick .wrap { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 12px; justify-content: center; }
+.qa { display: inline-flex; align-items: center; gap: 6px; padding: 8px 13px; border-radius: 999px; font-weight: 700; font-size: .86rem; text-decoration: none; background: var(--card); color: var(--tinta); border: 1.5px solid var(--linea); transition: transform .12s ease, border-color .12s ease; }
 .qa:not([class*="qa-"]):hover { border-color: #ddcdb0; }
 .qa-find { background: var(--verde-50); color: var(--verde-700); border-color: #bfe0cd; }
 .qa-give { background: var(--rojo-50); color: var(--rojo-700); border-color: #f3c9bd; }
