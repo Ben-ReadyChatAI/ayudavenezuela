@@ -1,0 +1,121 @@
+---
+import Base from '../layouts/Base.astro';
+
+const repo = 'https://github.com/Ben-ReadyChatAI/ayudavenezuela';
+---
+<Base
+  title="Contribuir en GitHub — Ayuda Venezuela"
+  description="Guía para programadores que quieran ayudar a mejorar Ayuda Venezuela: cómo enviar contribuciones (Pull Requests) en GitHub.">
+  <section class="section contribuir">
+    <div class="wrap">
+      <h1>Contribuir en GitHub</h1>
+      <p class="lead">
+        Esta página es para <strong>programadores</strong> que quieran ayudar a mejorar el sitio.
+        Si no programas, no la necesitas: puedes <a href="/sugerir/">sugerir un enlace</a> o
+        escribirnos. El proyecto es de código abierto y se aceptan contribuciones de la comunidad.
+      </p>
+
+      <p class="repo-cta">
+        <a class="repo-link" href={repo} target="_blank" rel="noopener noreferrer">
+          📦 Ver el repositorio en GitHub
+        </a>
+      </p>
+
+      <h2>¿Qué puedes aportar?</h2>
+      <ul class="bullets">
+        <li>Corregir o agregar enlaces y recursos (<code>src/data/resources.json</code>).</li>
+        <li>Actualizar la lista de insumos requeridos (<code>src/data/supplies.json</code>).</li>
+        <li>Arreglar errores de la interfaz, accesibilidad o diseño.</li>
+        <li>Mejorar textos, traducciones o rendimiento.</li>
+      </ul>
+      <p class="caveat">
+        Para cambios de datos (enlaces, insumos), confirma siempre la fuente. No agregues
+        datos personales, cuentas bancarias privadas ni cadenas sin origen claro.
+      </p>
+
+      <h2>Requisitos</h2>
+      <ul class="bullets">
+        <li>Una cuenta de <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>.</li>
+        <li><a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer">Git</a> instalado.</li>
+        <li><a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js</a> 18 o superior (solo si vas a correr el sitio localmente).</li>
+      </ul>
+
+      <h2>Pasos para enviar una contribución</h2>
+      <ol class="steps">
+        <li>
+          <h3>1. Haz un «fork» del repositorio</h3>
+          <p>Abre el <a href={repo} target="_blank" rel="noopener noreferrer">repositorio</a> y pulsa
+          el botón <strong>Fork</strong> (arriba a la derecha). Esto crea tu propia copia.</p>
+        </li>
+        <li>
+          <h3>2. Clona tu copia</h3>
+          <pre><code>git clone https://github.com/TU-USUARIO/ayudavenezuela.git
+cd ayudavenezuela</code></pre>
+        </li>
+        <li>
+          <h3>3. Instala y corre el sitio (opcional)</h3>
+          <p>Para ver tus cambios en el navegador antes de enviarlos:</p>
+          <pre><code>npm install
+npm run dev</code></pre>
+          <p>Abre <code>http://localhost:4321</code>. Es un sitio estático hecho con Astro.</p>
+        </li>
+        <li>
+          <h3>4. Crea una rama</h3>
+          <pre><code>git checkout -b mi-cambio</code></pre>
+        </li>
+        <li>
+          <h3>5. Haz tus cambios y confírmalos</h3>
+          <p>Edita los archivos (por ejemplo en <code>src/</code>) y luego:</p>
+          <pre><code>git add -A
+git commit -m "Describe tu cambio en pocas palabras"</code></pre>
+        </li>
+        <li>
+          <h3>6. Sube tu rama</h3>
+          <pre><code>git push origin mi-cambio</code></pre>
+        </li>
+        <li>
+          <h3>7. Abre un «Pull Request»</h3>
+          <p>GitHub te mostrará un botón <strong>Compare &amp; pull request</strong>. Descríbelo
+          brevemente (qué cambiaste y por qué) y envíalo. El equipo lo revisará antes de
+          publicarlo.</p>
+        </li>
+      </ol>
+
+      <h2>¿Encontraste un error pero no vas a programar?</h2>
+      <p>
+        Abre un <a href={`${repo}/issues`} target="_blank" rel="noopener noreferrer">issue en GitHub</a>
+        describiendo el problema, o usa el formulario para <a href="/sugerir/">sugerir un enlace o corrección</a>.
+        Toda ayuda suma. ¡Gracias por aportar a Venezuela! 🇻🇪
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contribuir h2 { margin-top: 1.8rem; font-size: 1.25rem; color: var(--tinta); }
+  .contribuir h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .contribuir .bullets { padding-left: 1.2rem; display: grid; gap: .35rem; }
+  .contribuir .bullets li { line-height: 1.45; }
+  .repo-cta { margin: 1.1rem 0 .4rem; }
+  .repo-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 18px; border-radius: 12px; font-weight: 700; text-decoration: none;
+    background: var(--tinta); color: #fff; border: 1.5px solid var(--tinta);
+  }
+  .repo-link:hover { filter: brightness(1.12); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; counter-reset: step; }
+  .steps > li {
+    border: 1.5px solid var(--linea); border-radius: 14px;
+    padding: 14px 16px; background: var(--card);
+  }
+  .steps p { margin: .25rem 0; }
+  .contribuir pre {
+    margin: .5rem 0 0; padding: 12px 14px; border-radius: 10px; overflow-x: auto;
+    background: #1f2733; color: #e8eef7; font-size: .86rem; line-height: 1.5;
+  }
+  .contribuir code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+  .contribuir p code, .contribuir li code {
+    background: #f1e9d8; color: #5a4a32; padding: 1px 6px; border-radius: 6px; font-size: .88em;
+  }
+  .contribuir pre code { background: none; color: inherit; padding: 0; }
+</style>
