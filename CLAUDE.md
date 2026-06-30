@@ -53,3 +53,19 @@ So the `supabase` / `supabase-dev` MCP servers (refs `frpinstqlqykihdktbml` /
 Never commit these creds. `.env`, `~/.claude.json`, and the env var hold them; CLAUDE.md
 only names the keys, never the values. Don't auto-fix the Habitania `email_messages` /
 `email_events` RLS advisory — that's a different project.
+
+## Email — use Resend (NOT the Gmail draft integration)
+To send mail (e.g. summaries to community admins like Yennia), send via **Resend**.
+Do NOT use the Gmail MCP — it can only create drafts, not send.
+
+- **API key:** user env var `RESEND_API_KEY` (persistent, user-scope on this machine).
+  Read from env; never hardcode/commit.
+- **Verified sender domain:** `ayudavenezuela.lat` (status `verified`, us-east-1). Send
+  `from` an address on it, e.g. `Ayuda Venezuela <hola@ayudavenezuela.lat>`.
+  (`ayudavenezuela.com` is NOT verified — don't send from it.)
+- **Set `reply_to`** to a real inbox (e.g. `ben_hain@readychatai.com`) so replies reach a human.
+- **Send:** `POST https://api.resend.com/emails` with `Authorization: Bearer $RESEND_API_KEY`,
+  JSON body `{from, to, reply_to, subject, html}`. Returns an email `id`; check delivery via
+  `GET https://api.resend.com/emails/{id}`.
+- Send UTF-8 bytes (Spanish accents/emoji) — PowerShell: pass
+  `[Text.Encoding]::UTF8.GetBytes($body)` with `ContentType "application/json; charset=utf-8"`.
