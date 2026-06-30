@@ -28,10 +28,28 @@ public via the Cloudflare tunnel `openocr`. Deploy = push to `main` + trigger a 
 `PUBLIC_*` vars reach the build as Dockerfile build args. Never commit `.env`.
 
 ## Supabase (link suggestions backend)
-AyudaVenezuela's own Supabase project ref = `deomqpstbqcjtfxrnwif`
+AyudaVenezuela's own Supabase project ref = `deomqpstbqcjtfxrnwif`, name `AyudaVe.Lat`
 (dashboard: https://supabase.com/dashboard/project/deomqpstbqcjtfxrnwif,
 URL: https://deomqpstbqcjtfxrnwif.supabase.co). Backs `link_suggestions` +
 `admin_users` (see `supabase/migrations/0002_link_suggestions.sql`).
-**NOTE:** the connected `supabase` / `supabase-dev` MCP servers point at the
-real-estate (Habitania) prod/dev projects, NOT this one — they cannot touch
-AyudaVe's DB. Run AyudaVe SQL via the dashboard SQL editor for `deomqpstbqcjtfxrnwif`.
+
+**It lives on its OWN Supabase account** — NOT the real-estate (Habitania) account.
+So the `supabase` / `supabase-dev` MCP servers (refs `frpinstqlqykihdktbml` /
+`ruqqxbnbcnpxgdyzopsy`) and their PAT canNOT reach AyudaVe. Use one of these instead:
+
+- **A — native MCP (preferred for queries + migrations):** MCP server `supabase-ayudave`
+  (scoped to `deomqpstbqcjtfxrnwif`, configured in `~/.claude.json`). Tools
+  `mcp__supabase-ayudave__execute_sql`, `apply_migration`, etc. Loads at session start.
+- **B — Management API (full SQL incl. DDL, works mid-session):** PAT in user env var
+  `SUPABASE_AYUDAVE_PAT`. Quick check:
+  `curl -sS -X POST https://api.supabase.com/v1/projects/deomqpstbqcjtfxrnwif/database/query -H "Authorization: Bearer $SUPABASE_AYUDAVE_PAT" -H "Content-Type: application/json" -d '{"query":"select 1"}'`
+- **C — PostgREST (data read/write, bypasses RLS, no DDL):** service-role secret in
+  local `.env` key `secret_key`. Hit `https://deomqpstbqcjtfxrnwif.supabase.co/rest/v1/<table>`
+  with `apikey` + `Authorization: Bearer <secret_key>` headers.
+- **D — direct Postgres (full power, scripted):** `.env` key `DB_password`. No `psql` on
+  this machine — use node `pg` (install in scratchpad). Host
+  `db.deomqpstbqcjtfxrnwif.supabase.co:5432` (may be IPv6-only; fall back to the IPv4 pooler).
+
+Never commit these creds. `.env`, `~/.claude.json`, and the env var hold them; CLAUDE.md
+only names the keys, never the values. Don't auto-fix the Habitania `email_messages` /
+`email_events` RLS advisory — that's a different project.
