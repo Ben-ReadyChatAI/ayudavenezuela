@@ -181,6 +181,11 @@ a.card:hover::before { transform: scaleX(1); }
 .admin-card { max-width: 860px; }
 .admin-url { font-size: 0.9rem; overflow-wrap: anywhere; }
 .admin-meta { margin: 0; color: var(--muted); font-size: 0.82rem; }
+.admin-status { padding: 1px 9px; border-radius: 999px; font-weight: 800; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.02em; }
+.admin-status-pending { background: #fdf0d5; color: #8a5a00; }
+.admin-status-approved { background: var(--verde-50); color: var(--verde-700); }
+.admin-status-rejected { background: var(--rojo-50); color: var(--rojo-700); }
+.admin-status-archived { background: var(--arena-2); color: var(--muted); }
 .admin-notes { width: 100%; font: inherit; padding: 9px 11px; border: 1px solid var(--linea); border-radius: 9px; resize: vertical; }
 .admin-actions { display: flex; flex-wrap: wrap; gap: 9px; }
 

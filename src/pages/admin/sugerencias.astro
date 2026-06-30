@@ -36,6 +36,7 @@ const configured = enabled && SUPABASE_URL && SUPABASE_ANON;
                   <option value="approved">Aprobadas</option>
                   <option value="rejected">Rechazadas</option>
                   <option value="archived">Archivadas</option>
+                  <option value="all">Todas</option>
                 </select>
               </label>
               <button id="refresh-suggestions" type="button" class="cl-contactbtn">Actualizar</button>
@@ -65,6 +66,7 @@ const configured = enabled && SUPABASE_URL && SUPABASE_ANON;
       const refreshBtn = document.getElementById('refresh-suggestions');
       const logoutBtn = document.getElementById('admin-logout');
 
+      const STATUS_LABELS = { pending: 'Pendiente', approved: 'Aprobada', rejected: 'Rechazada', archived: 'Archivada' };
       function token() { return sessionStorage.getItem(TOKEN_KEY); }
       function userId() { return sessionStorage.getItem(USER_KEY); }
       function authHeaders() {
@@ -84,8 +86,9 @@ const configured = enabled && SUPABASE_URL && SUPABASE_ANON;
         msg.textContent = 'Cargando...';
         list.innerHTML = '';
         try {
+          const statusClause = filter.value === 'all' ? '' : '&status=eq.' + encodeURIComponent(filter.value);
           const params = '?select=id,created_at,title,url,category,link_type,description,verification,submitter_name,submitter_email,status,admin_notes' +
-            '&status=eq.' + encodeURIComponent(filter.value) + '&order=created_at.desc&limit=100';
+            statusClause + '&order=created_at.desc&limit=200';
           const r = await fetch(REST + params, { headers: authHeaders() });
           if (r.status === 401 || r.status === 403) throw new Error('auth');
           if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -117,7 +120,10 @@ const configured = enabled && SUPABASE_URL && SUPABASE_ANON;
         const cat = document.createElement('span');
         cat.className = 'cl-cat';
         cat.textContent = row.category || '';
-        top.append(tag, cat);
+        const st = document.createElement('span');
+        st.className = 'cl-cat admin-status admin-status-' + row.status;
+        st.textContent = STATUS_LABELS[row.status] || row.status;
+        top.append(tag, cat, st);
 
         const h = document.createElement('div');
         h.className = 'name';
@@ -167,6 +173,10 @@ const configured = enabled && SUPABASE_URL && SUPABASE_ANON;
           });
           if (!r.ok) throw new Error('HTTP ' + r.status);
           await load();
+          const label = STATUS_LABELS[status] || status;
+          msg.textContent = (filter.value === 'all' || filter.value === status)
+            ? '✓ Guardado como ' + label + '.'
+            : '✓ Movida a «' + label + '». Abre esa pestaña o «Todas» para verla.';
         } catch (e) {
           msg.textContent = 'No se pudo guardar el cambio.';
         }

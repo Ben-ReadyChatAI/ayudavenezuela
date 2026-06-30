@@ -26,3 +26,12 @@ Keep it warm, friendly, and **compact** — minimize vertical scrolling, use hor
 Static Astro on Coolify (app `flqqe4804uyjxtgivp8e1ekw`, project AyudaVe, Chicago Host),
 public via the Cloudflare tunnel `openocr`. Deploy = push to `main` + trigger a Coolify deploy.
 `PUBLIC_*` vars reach the build as Dockerfile build args. Never commit `.env`.
+
+## Supabase (link suggestions backend)
+AyudaVenezuela's own Supabase project ref = `deomqpstbqcjtfxrnwif`
+(dashboard: https://supabase.com/dashboard/project/deomqpstbqcjtfxrnwif,
+URL: https://deomqpstbqcjtfxrnwif.supabase.co). Backs `link_suggestions` +
+`admin_users` (see `supabase/migrations/0002_link_suggestions.sql`).
+**NOTE:** the connected `supabase` / `supabase-dev` MCP servers point at the
+real-estate (Habitania) prod/dev projects, NOT this one — they cannot touch
+AyudaVe's DB. Run AyudaVe SQL via the dashboard SQL editor for `deomqpstbqcjtfxrnwif`.
