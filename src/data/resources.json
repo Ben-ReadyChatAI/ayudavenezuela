@@ -1,6 +1,6 @@
 {
   "meta": {
-    "source": "Ayuda Venezuela (community seed) + actualización comunitaria 2026-06-28 (ver docs/SOURCES.md)",
+    "source": "Ayuda Venezuela (community seed) + actualización comunitaria 2026-06-28 + aportes aprobados 2026-06-30 (ver docs/SOURCES.md)",
     "note_es": "Enlaces recopilados y actualizados por la comunidad el 28-jun-2026. Verifica siempre la información en la fuente antes de actuar o donar.",
     "note_en": "Community-sourced links, updated 2026-06-28. Always verify at the source before acting or donating.",
     "statusLegend": {
@@ -33,7 +33,9 @@
         { "name": "PalMedico AI", "url": "https://pre.palmedico.ai/", "type": "website", "status": "active", "note": { "es": "Asistente para localizar pacientes y personas.", "en": "Assistant to locate patients and people." } },
         { "name": "PalMedico AI (Telegram)", "url": "https://t.me/Palmedicoai_bot", "type": "telegram", "status": "active", "note": { "es": "Bot de búsqueda de pacientes y personas.", "en": "Patient and people search bot." } },
         { "name": "Localiza Pacientes", "url": "https://www.localizapacientes.com/", "type": "website", "status": "active", "note": { "es": "Localiza a pacientes ingresados en hospitales.", "en": "Locate patients admitted to hospitals." } },
-        { "name": "Asistencia Médica — Fundación Vive Más", "url": "https://asistencia-medica-fvivemas.web.app/", "type": "website", "status": "active", "note": { "es": "Plataforma de asistencia médica de la Fundación Vive Más.", "en": "Medical assistance platform by Fundación Vive Más." } }
+        { "name": "Asistencia Médica — Fundación Vive Más", "url": "https://asistencia-medica-fvivemas.web.app/", "type": "website", "status": "active", "note": { "es": "Plataforma de asistencia médica de la Fundación Vive Más.", "en": "Medical assistance platform by Fundación Vive Más." } },
+        { "name": "Red de Esperanza", "url": "https://red-de-esperanza-lime.vercel.app/", "type": "website", "status": "needs-check", "note": { "es": "Plataforma ciudadana para ayudar a ubicar personas.", "en": "Citizen platform to help locate people." } },
+        { "name": "SOSVEN", "url": "https://sosven.site/#personas", "type": "website", "status": "needs-check", "caution": true, "note": { "es": "Reporta personas y mascotas desaparecidas; también saqueos o robo de donaciones.", "en": "Report missing people and pets; also looting or aid theft." } }
       ]
     },
     {
@@ -45,7 +47,8 @@
         { "name": "Mascotas por Venezuela", "url": "https://mascotasporvenezuela.com/", "type": "website", "status": "active", "note": { "es": "Mascotas perdidas/encontradas, refugios y veterinarios.", "en": "Lost/found pets, shelters and vets." } },
         { "name": "Mi Gente VE — «Patitas a Salvo»", "url": "https://migenteve.com/", "type": "website", "status": "active", "note": { "es": "Mascotas perdidas y directorio veterinario 24 h.", "en": "Lost pets and 24h vet directory." } },
         { "name": "Patitas a Salvo Venezuela", "url": "https://patitasasalvovenezuela.org/", "type": "website", "status": "active", "note": { "es": "Rescate y reencuentro de mascotas.", "en": "Pet rescue and reunion." } },
-        { "name": "Red de Apoyo Canino — Donaciones", "url": "https://reddeapoyocanino.org/dona-metalico/", "type": "donation", "status": "active", "note": { "es": "Donaciones para el rescate y cuidado de mascotas.", "en": "Donations for pet rescue and care." } }
+        { "name": "Red de Apoyo Canino — Donaciones", "url": "https://reddeapoyocanino.org/dona-metalico/", "type": "donation", "status": "active", "note": { "es": "Donaciones para el rescate y cuidado de mascotas.", "en": "Donations for pet rescue and care." } },
+        { "name": "Huella Scan — Terremoto", "url": "https://www.huellascan.com/terremoto", "type": "website", "status": "active", "note": { "es": "Mascotas perdidas y encontradas tras el terremoto.", "en": "Lost and found pets after the earthquake." } }
       ]
     },
     {
@@ -56,7 +59,8 @@
       "items": [
         { "name": "Pacientes Consolidados — Hospitales Venezuela", "url": "https://www.dropbox.com/scl/fi/m4fbaw4metvkuay91fi0j/26JUN26-23.45-Pacientes-Consolidados-Hospitales-Venezuela.xlsx?rlkey=0bjem2yymn9q88qumzr33fisz&dl=0", "type": "file", "status": "needs-check", "note": { "es": "Hoja de cálculo (Dropbox), actualizada 26-jun.", "en": "Spreadsheet (Dropbox), updated Jun 26." } },
         { "name": "Carpeta de información (Google Drive)", "url": "https://drive.google.com/drive/folders/1o36ifaRz45kAs5rKzci49aD0mP5JB_YI", "type": "file", "status": "needs-check" },
-        { "name": "Pacientes / hospitales (Google Sheets)", "url": "https://docs.google.com/spreadsheets/d/14dku-4cMaUt0aLd-HCzG1E1fBOLvttKYYrb6oWphCMQ/edit?gid=346177808", "type": "file", "status": "active", "note": { "es": "Hoja colaborativa de pacientes consolidados.", "en": "Collaborative consolidated-patient sheet." } }
+        { "name": "Pacientes / hospitales (Google Sheets)", "url": "https://docs.google.com/spreadsheets/d/14dku-4cMaUt0aLd-HCzG1E1fBOLvttKYYrb6oWphCMQ/edit?gid=346177808", "type": "file", "status": "active", "note": { "es": "Hoja colaborativa de pacientes consolidados.", "en": "Collaborative consolidated-patient sheet." } },
+        { "name": "Listado de hospitalizados — UHN Plus", "url": "https://www.uhnplus.com/lista-de-personas-hospitalizadas-sin-familias-en-venezuela/", "type": "website", "status": "needs-check", "note": { "es": "Listado de personas hospitalizadas sin familiares.", "en": "List of hospitalized people without relatives." } }
       ]
     },
     {
@@ -83,7 +87,12 @@
         { "name": "ONU (OCHA) — Fondo Humanitario para Venezuela", "url": "https://crisisrelief.un.org/venezuela", "type": "donation", "status": "active", "note": { "es": "Oficina de la ONU para Asuntos Humanitarios (OCHA).", "en": "UN Office for the Coordination of Humanitarian Affairs (OCHA)." } },
         { "name": "Cáritas de Venezuela", "url": "https://caritasvenezuela.org/donaciones", "type": "donation", "status": "active", "note": { "es": "Red humanitaria de la Iglesia católica en Venezuela.", "en": "Catholic Church humanitarian network in Venezuela." } },
         { "name": "ACNUR (UNHCR) — Agencia de la ONU para los Refugiados", "url": "https://www.acnur.org/donate/venezuela", "type": "donation", "status": "active", "note": { "es": "Agencia de la ONU para los refugiados.", "en": "The UN Refugee Agency (UNHCR)." } },
-        { "name": "Catholic Relief Services (CRS)", "url": "https://www.crs.org/donate/venezuela-earthquake?ms=agicrs0226veq00her00", "type": "donation", "status": "active", "note": { "es": "Agencia humanitaria católica de Estados Unidos.", "en": "U.S. Catholic humanitarian agency." } }
+        { "name": "Catholic Relief Services (CRS)", "url": "https://www.crs.org/donate/venezuela-earthquake?ms=agicrs0226veq00her00", "type": "donation", "status": "active", "note": { "es": "Agencia humanitaria católica de Estados Unidos.", "en": "U.S. Catholic humanitarian agency." } },
+        { "name": "Yummy Rides — Donaciones", "url": "https://dona.yummyrides.com/", "type": "donation", "status": "active", "note": { "es": "Canal de donaciones de Yummy Rides.", "en": "Yummy Rides donation channel." } },
+        { "name": "Sun Risas", "url": "https://fundraise.sunrisas.org/campaign/815513/donate", "type": "donation", "status": "active", "note": { "es": "Recaudación para personas afectadas por el terremoto.", "en": "Fundraiser for earthquake-affected people." } },
+        { "name": "The House Project", "url": "https://thehouse-project.org/products/support-the-house-project-make-a-difference-today?variant=49348724228394", "type": "donation", "status": "active", "note": { "es": "Fondos para el terremoto en Venezuela.", "en": "Funds for the Venezuela earthquake." } },
+        { "name": "We Love Foundation (GoFundMe)", "url": "https://www.gofundme.com/f/emergency-relief-for-venezuela-earthquake-victims", "type": "donation", "status": "active", "note": { "es": "Recaudación de fondos para las personas afectadas.", "en": "Fundraiser for affected people." } },
+        { "name": "Rotary Distrito 4370", "handle": "@rotarydistrito4370oficial", "url": "https://www.instagram.com/rotarydistrito4370oficial", "type": "social", "status": "active", "note": { "es": "Recepción de insumos y donaciones.", "en": "Receiving supplies and donations." } }
       ]
     },
     {
@@ -95,7 +104,8 @@
         { "name": "PsicoData", "handle": "@psicodatavzla", "url": "https://www.instagram.com/psicodatavzla/", "type": "social", "status": "active", "note": { "es": "Iniciativa de salud mental (UCAB).", "en": "Mental-health initiative (UCAB)." } },
         { "name": "Psicólogos Sin Fronteras Venezuela", "handle": "@psfvenezuela", "url": "https://www.instagram.com/psfvenezuela/", "type": "social", "status": "active", "note": { "es": "Apoyo psicosocial en emergencias. También en X.", "en": "Psychosocial support in emergencies. Also on X." } },
         { "name": "Federación de Psicólogos de Venezuela", "handle": "@fpv_ve", "url": "https://www.instagram.com/fpv_ve/", "type": "social", "status": "active", "note": { "es": "En X: @fpv_vzla.", "en": "On X: @fpv_vzla." } },
-        { "name": "Universidad Metropolitana (UNIMET)", "handle": "@unimet", "url": "https://www.instagram.com/unimet/", "type": "social", "status": "active", "note": { "es": "Programas de apoyo psicológico.", "en": "Psychological support programs." } }
+        { "name": "Universidad Metropolitana (UNIMET)", "handle": "@unimet", "url": "https://www.instagram.com/unimet/", "type": "social", "status": "active", "note": { "es": "Programas de apoyo psicológico.", "en": "Psychological support programs." } },
+        { "name": "Contigo UCV", "url": "https://contigoucv.com/", "type": "website", "status": "active", "note": { "es": "Apoyo emocional para la comunidad ucevista (UCV).", "en": "Emotional support for the UCV community." } }
       ]
     },
     {
@@ -119,7 +129,9 @@
         { "name": "VenApp — Reportar personas", "url": "https://www.venapp.com/", "type": "app", "status": "active", "note": { "es": "App oficial para reportar personas atrapadas o desaparecidas.", "en": "Official app to report trapped or missing people." } },
         { "name": "FUNVISIS", "url": "http://www.funvisis.gob.ve/", "type": "website", "status": "active", "note": { "es": "Agencia sísmica oficial: magnitudes y réplicas.", "en": "Official seismic agency." } },
         { "name": "Protección Civil", "handle": "@PCivil_Ve", "url": "https://x.com/PCivil_Ve", "type": "social", "status": "active", "note": { "es": "También en Instagram: @pcivil_venezuela.", "en": "Also on Instagram: @pcivil_venezuela." } },
-        { "name": "Cruz Roja Venezolana", "handle": "@CruzRojaVe", "url": "https://x.com/CruzRojaVe", "type": "social", "status": "active" }
+        { "name": "Cruz Roja Venezolana", "handle": "@CruzRojaVe", "url": "https://x.com/CruzRojaVe", "type": "social", "status": "active" },
+        { "name": "IDENNA — Niños y adolescentes", "url": "https://idenna.gob.ve/", "type": "website", "status": "active", "note": { "es": "Reporte de niños y adolescentes extraviados o en riesgo (organismo oficial).", "en": "Report missing or at-risk children and adolescents (official body)." } },
+        { "name": "Yummy Rides — SOS", "url": "https://sos.yummyrides.com/", "type": "website", "status": "active", "note": { "es": "Reporta daños en edificios y consulta actividad sísmica en vivo.", "en": "Report building damage and view live seismic activity." } }
       ]
     }
   ]
