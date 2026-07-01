@@ -69,3 +69,10 @@ Do NOT use the Gmail MCP — it can only create drafts, not send.
   `GET https://api.resend.com/emails/{id}`.
 - Send UTF-8 bytes (Spanish accents/emoji) — PowerShell: pass
   `[Text.Encoding]::UTF8.GetBytes($body)` with `ContentType "application/json; charset=utf-8"`.
+
+**Inbound / replies:** email TO this project (e.g. `avisos@ayudavenezuela.lat`, replies from
+community admins) is received via **Resend inbound** — NOT the connected Gmail. List/read it:
+- `GET https://api.resend.com/emails/inbound?limit=25` → recent received messages.
+- `GET https://api.resend.com/emails/inbound/{id}` → full body (`text` / `html`).
+So to check whether someone replied, poll the inbound endpoint, not Gmail. Set `reply_to`
+on outbound sends if you want replies to reach a person's inbox instead of `avisos@`.
